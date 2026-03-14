@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700;900&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --color-teal: #0099CC;
+  --color-teal-light: #00bfff;
+  --color-teal-dark: #007aa3;
+  --color-indigo: #4B0082;
+  --color-indigo-light: #6a0db5;
+  --color-indigo-dark: #35005c;
+  --color-gold: #FFD700;
+  --color-gold-dark: #d4a800;
+  --color-void: #0a0612;
+  --color-void-surface: #100d1e;
+  --color-void-border: #2a1f4a;
+  --color-realm-white: #f8f4ff;
+
+  --font-display: 'Cinzel Decorative', serif;
+  --font-heading: 'Cinzel', serif;
+  --font-body: 'Lora', serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--color-void);
+  color: var(--color-realm-white);
+  -webkit-font-smoothing: antialiased;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+.light {
+  color-scheme: light;
+  --bg: var(--color-realm-white);
+  --fg: #1a0a2e;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-void);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-indigo);
+  border-radius: 3px;
+}
+
+/* Glow utilities */
+.glow-teal {
+  box-shadow: 0 0 20px rgba(0, 153, 204, 0.4), 0 0 60px rgba(0, 153, 204, 0.15);
+}
+.glow-gold {
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.5), 0 0 60px rgba(255, 215, 0, 0.2);
+}
+.glow-indigo {
+  box-shadow: 0 0 20px rgba(75, 0, 130, 0.6), 0 0 60px rgba(75, 0, 130, 0.25);
+}
+
+.text-glow-teal {
+  text-shadow: 0 0 20px rgba(0, 153, 204, 0.8), 0 0 40px rgba(0, 153, 204, 0.4);
+}
+.text-glow-gold {
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.4);
+}
+
+/* Ticker animation */
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-ticker {
+  animation: ticker 40s linear infinite;
+}
+
+/* Orbital ring animation */
+@keyframes orbit {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes orbit-reverse {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+
+.animate-orbit {
+  animation: orbit 12s linear infinite;
+}
+
+.animate-orbit-reverse {
+  animation: orbit-reverse 18s linear infinite;
+}
+
+/* Stars background */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+/* Reading progress */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-teal), var(--color-gold));
+  z-index: 100;
+  transition: width 0.1s ease;
+}
+
+/* Marquee */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-inner {
+  animation: marquee 50s linear infinite;
+  display: flex;
+  width: max-content;
+}
+
+.marquee-inner:hover {
+  animation-play-state: paused;
+}
+
+/* Card hover glow */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 40px rgba(0, 153, 204, 0.3), 0 0 1px rgba(0, 153, 204, 0.8);
+}
