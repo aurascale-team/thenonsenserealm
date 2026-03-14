@@ -28,10 +28,10 @@ export function Navbar({ currentPage, onNavigate, isDark, onToggleTheme }: Navba
       className="fixed top-0 left-0 right-0 z-50"
       style={{
         background: isDark
-          ? 'rgba(10, 6, 18, 0.85)'
-          : 'rgba(248, 244, 255, 0.9)',
+          ? 'rgba(26, 10, 0, 0.88)'
+          : 'rgba(255, 248, 240, 0.92)',
         backdropFilter: 'blur(16px)',
-        borderBottom: `1px solid ${isDark ? 'rgba(75, 0, 130, 0.4)' : 'rgba(75, 0, 130, 0.2)'}`,
+        borderBottom: `1px solid ${isDark ? 'rgba(193, 68, 14, 0.35)' : 'rgba(193, 68, 14, 0.2)'}`,
       }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
@@ -48,8 +48,8 @@ export function Navbar({ currentPage, onNavigate, isDark, onToggleTheme }: Navba
               className="relative px-4 py-2 font-heading text-sm tracking-wider uppercase transition-colors duration-200"
               style={{
                 color: currentPage === item.id
-                  ? '#0099CC'
-                  : isDark ? 'rgba(248, 244, 255, 0.7)' : 'rgba(75, 0, 130, 0.8)',
+                  ? '#00a896'
+                  : isDark ? 'rgba(255, 248, 240, 0.75)' : 'rgba(75, 0, 130, 0.8)',
               }}
             >
               {currentPage === item.id && (
@@ -70,9 +70,9 @@ export function Navbar({ currentPage, onNavigate, isDark, onToggleTheme }: Navba
             onClick={onToggleTheme}
             className="flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-heading tracking-wider transition-all duration-300"
             style={{
-              background: isDark ? 'rgba(75, 0, 130, 0.3)' : 'rgba(0, 153, 204, 0.15)',
-              border: `1px solid ${isDark ? 'rgba(75, 0, 130, 0.5)' : 'rgba(0, 153, 204, 0.4)'}`,
-              color: isDark ? '#FFD700' : '#4B0082',
+              background: isDark ? 'rgba(193, 68, 14, 0.3)' : 'rgba(0, 153, 204, 0.15)',
+              border: `1px solid ${isDark ? 'rgba(193, 68, 14, 0.5)' : 'rgba(0, 153, 204, 0.4)'}`,
+              color: isDark ? '#FFD700' : '#2a0e00',
             }}
           >
             {isDark ? <Moon size={12} /> : <Sun size={12} />}
@@ -83,7 +83,7 @@ export function Navbar({ currentPage, onNavigate, isDark, onToggleTheme }: Navba
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="md:hidden p-2"
-            style={{ color: isDark ? '#f8f4ff' : '#4B0082' }}
+            style={{ color: isDark ? '#fff8f0' : '#2a0e00' }}
           >
             {menuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
@@ -99,8 +99,8 @@ export function Navbar({ currentPage, onNavigate, isDark, onToggleTheme }: Navba
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden overflow-hidden"
             style={{
-              background: isDark ? 'rgba(10, 6, 18, 0.95)' : 'rgba(248, 244, 255, 0.97)',
-              borderBottom: `1px solid rgba(75, 0, 130, 0.3)`,
+              background: isDark ? 'rgba(26, 10, 0, 0.97)' : 'rgba(255, 248, 240, 0.97)',
+              borderBottom: `1px solid rgba(193, 68, 14, 0.3)`,
             }}
           >
             {navItems.map((item) => (
@@ -109,7 +109,7 @@ export function Navbar({ currentPage, onNavigate, isDark, onToggleTheme }: Navba
                 onClick={() => { onNavigate(item.id); setMenuOpen(false) }}
                 className="block w-full text-left px-6 py-3 font-heading text-sm tracking-widest uppercase border-b transition-colors"
                 style={{
-                  color: currentPage === item.id ? '#0099CC' : isDark ? 'rgba(248, 244, 255, 0.7)' : '#4B0082',
+                  color: currentPage === item.id ? '#00a896' : isDark ? 'rgba(255, 248, 240, 0.75)' : '#2a0e00',
                   borderColor: isDark ? 'rgba(75, 0, 130, 0.2)' : 'rgba(75, 0, 130, 0.1)',
                   background: currentPage === item.id ? 'rgba(0, 153, 204, 0.08)' : 'transparent',
                 }}

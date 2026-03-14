@@ -19,7 +19,7 @@ export const currentIssue = {
   era: "The Year of the Fractured Sky",
   coverStory: {
     title: "When the Algorithm Dreams of Sheep",
-    subtitle: "An investigation into artificial minds, mythological beasts, and the thin line between computation and consciousness",
+    subtitle: "Artificial minds, mythological beasts, and the thin line between computation and consciousness.",
     author: "Vesper Nighthollow",
     category: "Theories",
     readTime: "14 min",
@@ -129,7 +129,7 @@ export const volumes = [
     year: 2026,
     coverImage: "https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=600&q=80",
     articleCount: 12,
-    color: "#0099CC",
+    color: "#00a896",
   },
   {
     number: "VI",
@@ -137,7 +137,7 @@ export const volumes = [
     year: 2025,
     coverImage: "https://images.unsplash.com/photo-1502134249126-9f3755a50d78?w=600&q=80",
     articleCount: 14,
-    color: "#4B0082",
+    color: "#c1440e",
   },
   {
     number: "V",

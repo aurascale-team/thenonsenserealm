@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { Navbar } from './components/layout/Navbar'
 import { Footer } from './components/layout/Footer'
 import { D20Button } from './components/ui/D20Button'
+import { DoorIntro } from './components/ui/DoorIntro'
 import { HomePage } from './pages/HomePage'
 import { ArchivesPage } from './pages/ArchivesPage'
 import { DenPage } from './pages/DenPage'
@@ -17,6 +18,7 @@ const pageVariants = {
 }
 
 export default function App() {
+  const [entered, setEntered] = useState(false)
   const [page, setPage] = useState<Page>('home')
   const [isDark, setIsDark] = useState(true)
 
@@ -26,56 +28,63 @@ export default function App() {
   }
 
   return (
-    <div
-      className="min-h-screen transition-colors duration-500"
-      style={{
-        background: isDark ? '#0a0612' : '#f0eaf8',
-        color: isDark ? '#f8f4ff' : '#1a0a2e',
-      }}
-    >
-      {isDark && (
-        <div
-          className="fixed inset-0 pointer-events-none z-0"
-          style={{
-            backgroundImage: `
-              radial-gradient(ellipse at 20% 10%, rgba(75,0,130,0.15) 0%, transparent 40%),
-              radial-gradient(ellipse at 80% 80%, rgba(0,153,204,0.08) 0%, transparent 40%),
-              radial-gradient(ellipse at 50% 50%, rgba(75,0,130,0.05) 0%, transparent 60%)
-            `,
-          }}
-        />
-      )}
+    <>
+      <DoorIntro onComplete={() => setEntered(true)} />
 
-      <div className="relative z-10">
-        <Navbar
-          currentPage={page}
-          onNavigate={navigate}
-          isDark={isDark}
-          onToggleTheme={() => setIsDark(!isDark)}
-        />
+      <motion.div
+        className="min-h-screen transition-colors duration-500"
+        style={{
+          background: isDark ? '#1a0a00' : '#fff8f0',
+          color: isDark ? '#fff8f0' : '#2a0e00',
+        }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: entered ? 1 : 0 }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+      >
+        {isDark && (
+          <div
+            className="fixed inset-0 pointer-events-none z-0"
+            style={{
+              backgroundImage: `
+                radial-gradient(ellipse at 20% 10%, rgba(193,68,14,0.2) 0%, transparent 40%),
+                radial-gradient(ellipse at 80% 80%, rgba(0,168,150,0.1) 0%, transparent 40%),
+                radial-gradient(ellipse at 50% 50%, rgba(122,58,0,0.12) 0%, transparent 60%)
+              `,
+            }}
+          />
+        )}
 
-        <main>
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={page}
-              variants={pageVariants}
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              transition={{ duration: 0.3, ease: 'easeInOut' }}
-            >
-              {page === 'home' && <HomePage isDark={isDark} onNavigate={navigate} />}
-              {page === 'archives' && <ArchivesPage isDark={isDark} />}
-              {page === 'den' && <DenPage isDark={isDark} />}
-              {page === 'community' && <CommunityPage isDark={isDark} />}
-            </motion.div>
-          </AnimatePresence>
-        </main>
+        <div className="relative z-10">
+          <Navbar
+            currentPage={page}
+            onNavigate={navigate}
+            isDark={isDark}
+            onToggleTheme={() => setIsDark(!isDark)}
+          />
 
-        <Footer isDark={isDark} onNavigate={navigate} />
-      </div>
+          <main>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={page}
+                variants={pageVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                transition={{ duration: 0.3, ease: 'easeInOut' }}
+              >
+                {page === 'home' && <HomePage isDark={isDark} onNavigate={navigate} />}
+                {page === 'archives' && <ArchivesPage isDark={isDark} />}
+                {page === 'den' && <DenPage isDark={isDark} />}
+                {page === 'community' && <CommunityPage isDark={isDark} />}
+              </motion.div>
+            </AnimatePresence>
+          </main>
 
-      <D20Button isDark={isDark} />
-    </div>
+          <Footer isDark={isDark} onNavigate={navigate} />
+        </div>
+
+        <D20Button isDark={isDark} />
+      </motion.div>
+    </>
   )
 }

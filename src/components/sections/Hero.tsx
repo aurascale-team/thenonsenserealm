@@ -25,15 +25,15 @@ export function Hero({ isDark, onNavigate }: HeroProps) {
           className="absolute inset-0"
           style={{
             background: isDark
-              ? 'linear-gradient(to top, #0a0612 40%, transparent 100%)'
-              : 'linear-gradient(to top, rgba(26, 10, 46, 0.95) 40%, transparent 100%)',
+              ? 'linear-gradient(to top, #1a0a00 40%, transparent 100%)'
+              : 'linear-gradient(to top, rgba(42, 14, 0, 0.95) 40%, transparent 100%)',
           }}
         />
         {/* Cosmic overlay */}
         <div
           className="absolute inset-0 opacity-30"
           style={{
-            background: 'radial-gradient(ellipse at 70% 30%, rgba(75, 0, 130, 0.5) 0%, transparent 60%), radial-gradient(ellipse at 20% 80%, rgba(0, 153, 204, 0.3) 0%, transparent 50%)',
+            background: 'radial-gradient(ellipse at 75% 20%, rgba(0, 150, 130, 0.55) 0%, transparent 50%), radial-gradient(ellipse at 25% 70%, rgba(193, 68, 14, 0.6) 0%, transparent 55%), radial-gradient(ellipse at 50% 50%, rgba(180, 80, 0, 0.25) 0%, transparent 60%)',
           }}
         />
       </div>
@@ -85,7 +85,7 @@ export function Hero({ isDark, onNavigate }: HeroProps) {
           <div className="flex items-center gap-3 mb-6">
             <span
               className="font-heading text-xs tracking-widest uppercase px-3 py-1 rounded-full"
-              style={{ background: 'rgba(0, 153, 204, 0.2)', color: '#0099CC', border: '1px solid rgba(0, 153, 204, 0.4)' }}
+              style={{ background: 'rgba(0, 168, 150, 0.2)', color: '#00a896', border: '1px solid rgba(0, 168, 150, 0.4)' }}
             >
               Vol. {volume} — Cover Story
             </span>
@@ -105,18 +105,18 @@ export function Hero({ isDark, onNavigate }: HeroProps) {
           </h1>
 
           <p
-            className="text-lg mb-6 leading-relaxed max-w-2xl"
-            style={{ color: 'rgba(248, 244, 255, 0.7)', fontFamily: "'Lora', serif" }}
+            className="mb-6 leading-relaxed max-w-xl"
+            style={{ color: 'rgba(255, 248, 240, 0.7)', fontFamily: "'Lora', serif", fontSize: '1rem' }}
           >
             {coverStory.subtitle}
           </p>
 
           <div className="flex items-center gap-4 mb-8">
-            <span className="text-sm" style={{ color: 'rgba(248, 244, 255, 0.5)' }}>
-              By <strong style={{ color: '#0099CC' }}>{coverStory.author}</strong>
+            <span className="text-sm" style={{ color: 'rgba(255, 248, 240, 0.55)' }}>
+              By <strong style={{ color: '#00a896' }}>{coverStory.author}</strong>
             </span>
-            <span style={{ color: 'rgba(248, 244, 255, 0.3)' }}>·</span>
-            <span className="flex items-center gap-1 text-sm" style={{ color: 'rgba(248, 244, 255, 0.5)' }}>
+            <span style={{ color: 'rgba(255, 248, 240, 0.35)' }}>·</span>
+            <span className="flex items-center gap-1 text-sm" style={{ color: 'rgba(255, 248, 240, 0.55)' }}>
               <Clock size={12} /> {coverStory.readTime} read
             </span>
           </div>
@@ -128,7 +128,7 @@ export function Hero({ isDark, onNavigate }: HeroProps) {
               className="flex items-center gap-2 px-6 py-3 rounded-full font-heading text-sm tracking-wider uppercase transition-all"
               style={{
                 background: '#FFD700',
-                color: '#0a0612',
+                color: '#1a0a00',
                 fontWeight: 700,
                 boxShadow: '0 0 20px rgba(255, 215, 0, 0.4)',
               }}
@@ -142,8 +142,8 @@ export function Hero({ isDark, onNavigate }: HeroProps) {
               className="flex items-center gap-2 px-6 py-3 rounded-full font-heading text-sm tracking-wider uppercase transition-all"
               style={{
                 background: 'transparent',
-                color: '#f8f4ff',
-                border: '1px solid rgba(248, 244, 255, 0.3)',
+                color: '#fff8f0',
+                border: '1px solid rgba(255, 248, 240, 0.35)',
               }}
             >
               Explore Archives
@@ -160,7 +160,7 @@ export function Hero({ isDark, onNavigate }: HeroProps) {
           style={{
             borderLeft: '3px solid #0099CC',
             paddingLeft: '1rem',
-            color: 'rgba(248, 244, 255, 0.55)',
+            color: 'rgba(255, 248, 240, 0.6)',
             fontFamily: "'Lora', serif",
             fontStyle: 'italic',
             fontSize: '0.9rem',

@@ -27,7 +27,7 @@ export function NonsenseLogo({ size = 'md', className = '' }: NonsenseLogoProps)
           {/* Outer orbital ring */}
           <motion.ellipse
             cx="40" cy="40" rx="38" ry="14"
-            stroke="#0099CC" strokeWidth="1.5" fill="none"
+            stroke="#00a896" strokeWidth="1.5" fill="none"
             strokeDasharray="4 3"
             style={{ transformOrigin: '40px 40px' }}
             animate={{ rotate: 360 }}
@@ -46,16 +46,16 @@ export function NonsenseLogo({ size = 'md', className = '' }: NonsenseLogoProps)
             {/* Body */}
             <motion.path
               d="M28 44 Q32 36 40 34 Q48 32 52 38 Q56 44 50 50 Q44 56 36 54 Q28 52 28 44Z"
-              fill="#4B0082"
-              stroke="#0099CC"
+              fill="#7a3a00"
+              stroke="#00a896"
               strokeWidth="1"
               whileHover={{ scale: 1.05 }}
             />
             {/* Head */}
             <path
               d="M48 32 Q54 26 58 28 Q60 24 56 22 Q54 20 50 24 Q46 28 48 32Z"
-              fill="#4B0082"
-              stroke="#0099CC"
+              fill="#7a3a00"
+              stroke="#00a896"
               strokeWidth="1"
             />
             {/* Eye */}
@@ -63,7 +63,7 @@ export function NonsenseLogo({ size = 'md', className = '' }: NonsenseLogoProps)
             {/* Wing */}
             <path
               d="M36 36 Q26 28 22 22 Q30 26 38 32"
-              stroke="#0099CC"
+              stroke="#00a896"
               strokeWidth="1.5"
               fill="none"
               strokeLinecap="round"
@@ -71,7 +71,7 @@ export function NonsenseLogo({ size = 'md', className = '' }: NonsenseLogoProps)
             {/* Tail */}
             <path
               d="M30 50 Q22 56 20 62 Q24 58 28 54"
-              stroke="#0099CC"
+              stroke="#00a896"
               strokeWidth="1.5"
               fill="none"
               strokeLinecap="round"
@@ -106,7 +106,7 @@ export function NonsenseLogo({ size = 'md', className = '' }: NonsenseLogoProps)
       {/* Wordmark */}
       <div className="flex flex-col leading-none">
         <span
-          className="font-display font-black text-[#0099CC] tracking-widest uppercase"
+          className="font-display font-black text-[#00a896] tracking-widest uppercase"
           style={{ fontSize: size === 'lg' ? '1.4rem' : size === 'md' ? '1rem' : '0.7rem', letterSpacing: '0.2em' }}
         >
           The

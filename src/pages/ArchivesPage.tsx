@@ -23,10 +23,10 @@ export function ArchivesPage({ isDark }: ArchivesPageProps) {
     return matchSearch && matchCat && matchEra
   })
 
-  const inputBg = isDark ? 'rgba(16,13,30,0.8)' : 'rgba(255,255,255,0.9)'
-  const inputBorder = isDark ? 'rgba(75,0,130,0.4)' : 'rgba(75,0,130,0.25)'
-  const textColor = isDark ? '#f8f4ff' : '#1a0a2e'
-  const mutedColor = isDark ? 'rgba(248,244,255,0.5)' : 'rgba(75,0,130,0.6)'
+  const inputBg = isDark ? 'rgba(30,14,2,0.8)' : 'rgba(255,255,255,0.9)'
+  const inputBorder = isDark ? 'rgba(193,68,14,0.4)' : 'rgba(193,68,14,0.25)'
+  const textColor = isDark ? '#fff8f0' : '#2a0e00'
+  const mutedColor = isDark ? 'rgba(255,248,240,0.5)' : 'rgba(193,68,14,0.6)'
 
   return (
     <div className="min-h-screen pt-24 max-w-7xl mx-auto px-6 pb-16">
@@ -38,7 +38,7 @@ export function ArchivesPage({ isDark }: ArchivesPageProps) {
       >
         <span
           className="font-heading text-xs tracking-widest uppercase"
-          style={{ color: '#0099CC' }}
+          style={{ color: '#00a896' }}
         >
           The Collection
         </span>
@@ -81,7 +81,7 @@ export function ArchivesPage({ isDark }: ArchivesPageProps) {
               />
               <div
                 className="absolute inset-0"
-                style={{ background: 'linear-gradient(to top, rgba(10,6,18,0.9) 0%, transparent 60%)' }}
+                style={{ background: 'linear-gradient(to top, rgba(26,10,0,0.9) 0%, transparent 60%)' }}
               />
               {/* Active border */}
               {activeEra === vol.era && (
@@ -97,7 +97,7 @@ export function ArchivesPage({ isDark }: ArchivesPageProps) {
                 >
                   {vol.number}
                 </div>
-                <div className="text-center text-xs leading-tight" style={{ color: 'rgba(248,244,255,0.7)' }}>
+                <div className="text-center text-xs leading-tight" style={{ color: 'rgba(255,248,240,0.7)' }}>
                   {vol.year}
                 </div>
               </div>
@@ -110,10 +110,10 @@ export function ArchivesPage({ isDark }: ArchivesPageProps) {
             animate={{ opacity: 1 }}
             className="mt-4 flex items-center gap-2"
           >
-            <span className="text-sm" style={{ color: '#0099CC' }}>Filtered by:</span>
+            <span className="text-sm" style={{ color: '#00a896' }}>Filtered by:</span>
             <span
               className="text-xs font-heading tracking-wider px-3 py-1 rounded-full cursor-pointer"
-              style={{ background: 'rgba(0,153,204,0.15)', color: '#0099CC', border: '1px solid rgba(0,153,204,0.4)' }}
+              style={{ background: 'rgba(0,168,150,0.15)', color: '#00a896', border: '1px solid rgba(0,168,150,0.4)' }}
               onClick={() => setActiveEra(null)}
             >
               {activeEra} ✕
@@ -136,7 +136,7 @@ export function ArchivesPage({ isDark }: ArchivesPageProps) {
               className="w-full pl-10 pr-4 py-3 rounded-xl text-sm outline-none transition-all"
               style={{
                 background: inputBg,
-                border: `1px solid ${search ? '#0099CC' : inputBorder}`,
+                border: `1px solid ${search ? '#00a896' : inputBorder}`,
                 color: textColor,
                 fontFamily: "'Lora', serif",
               }}
@@ -155,9 +155,9 @@ export function ArchivesPage({ isDark }: ArchivesPageProps) {
               onClick={() => setActiveCategory(activeCategory === cat ? null : cat)}
               className="px-4 py-1.5 rounded-full font-heading text-xs tracking-wider uppercase transition-all"
               style={{
-                background: activeCategory === cat ? '#0099CC' : 'transparent',
-                color: activeCategory === cat ? '#f8f4ff' : mutedColor,
-                border: `1px solid ${activeCategory === cat ? '#0099CC' : inputBorder}`,
+                background: activeCategory === cat ? '#00a896' : 'transparent',
+                color: activeCategory === cat ? '#fff8f0' : mutedColor,
+                border: `1px solid ${activeCategory === cat ? '#00a896' : inputBorder}`,
               }}
             >
               {cat}
@@ -205,15 +205,15 @@ export function ArchivesPage({ isDark }: ArchivesPageProps) {
                 whileHover={{ x: 4 }}
                 className="group cursor-pointer flex gap-5 p-4 rounded-xl transition-all"
                 style={{
-                  background: isDark ? 'rgba(16,13,30,0.6)' : 'rgba(255,255,255,0.8)',
-                  border: `1px solid ${isDark ? 'rgba(75,0,130,0.2)' : 'rgba(75,0,130,0.1)'}`,
+                  background: isDark ? 'rgba(30,14,2,0.6)' : 'rgba(255,255,255,0.8)',
+                  border: `1px solid ${isDark ? 'rgba(193,68,14,0.2)' : 'rgba(193,68,14,0.1)'}`,
                 }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.borderColor = 'rgba(0,153,204,0.4)'
-                  ;(e.currentTarget as HTMLElement).style.boxShadow = '0 4px 20px rgba(0,153,204,0.15)'
+                  (e.currentTarget as HTMLElement).style.borderColor = 'rgba(0,168,150,0.4)'
+                  ;(e.currentTarget as HTMLElement).style.boxShadow = '0 4px 20px rgba(0,168,150,0.15)'
                 }}
                 onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.borderColor = isDark ? 'rgba(75,0,130,0.2)' : 'rgba(75,0,130,0.1)'
+                  (e.currentTarget as HTMLElement).style.borderColor = isDark ? 'rgba(193,68,14,0.2)' : 'rgba(193,68,14,0.1)'
                   ;(e.currentTarget as HTMLElement).style.boxShadow = 'none'
                 }}
               >
@@ -227,7 +227,7 @@ export function ArchivesPage({ isDark }: ArchivesPageProps) {
                   <div className="flex items-center gap-2 mb-1">
                     <span
                       className="font-heading text-xs tracking-wider uppercase"
-                      style={{ color: '#0099CC' }}
+                      style={{ color: '#00a896' }}
                     >
                       {article.category}
                     </span>
@@ -237,7 +237,7 @@ export function ArchivesPage({ isDark }: ArchivesPageProps) {
                     </span>
                   </div>
                   <h3
-                    className="font-heading font-bold mb-1 group-hover:text-[#0099CC] transition-colors truncate"
+                    className="font-heading font-bold mb-1 group-hover:text-[#00a896] transition-colors truncate"
                     style={{ color: textColor, fontSize: '1rem' }}
                   >
                     {article.title}

@@ -27,10 +27,10 @@ export function D20Button({ isDark: _isDark }: D20ButtonProps) {
             exit={{ opacity: 0, y: 10, scale: 0.9 }}
             className="absolute bottom-16 right-0 w-48 p-3 rounded-xl text-xs text-center"
             style={{
-              background: 'rgba(10, 6, 18, 0.95)',
-              border: '1px solid rgba(0, 153, 204, 0.5)',
-              color: '#f8f4ff',
-              boxShadow: '0 0 20px rgba(0, 153, 204, 0.3)',
+              background: 'rgba(26, 10, 0, 0.95)',
+              border: '1px solid rgba(0, 168, 150, 0.5)',
+              color: '#fff8f0',
+              boxShadow: '0 0 20px rgba(0, 168, 150, 0.3)',
             }}
           >
             Rolling for a random article from the Realm...
@@ -44,8 +44,8 @@ export function D20Button({ isDark: _isDark }: D20ButtonProps) {
         whileTap={{ scale: 0.9, rotate: -15 }}
         className="w-14 h-14 flex items-center justify-center rounded-full text-xl font-bold"
         style={{
-          background: 'linear-gradient(135deg, #4B0082, #6a0db5)',
-          boxShadow: '0 0 20px rgba(75, 0, 130, 0.6), 0 4px 16px rgba(0,0,0,0.4)',
+          background: 'linear-gradient(135deg, #7a3a00, #c1440e)',
+          boxShadow: '0 0 20px rgba(193, 68, 14, 0.6), 0 4px 16px rgba(0,0,0,0.4)',
           color: '#FFD700',
           border: '2px solid rgba(255, 215, 0, 0.4)',
         }}

@@ -14,7 +14,7 @@ interface Article {
 }
 
 const categoryColors: Record<string, string> = {
-  Fiction: '#0099CC',
+  Fiction: '#00a896',
   Tech: '#FFD700',
   Art: '#9b59b6',
   Theories: '#e67e22',
@@ -27,7 +27,7 @@ interface ArticleCardProps {
 }
 
 function ArticleCard({ article, isDark, variant = 'default' }: ArticleCardProps) {
-  const catColor = categoryColors[article.category] ?? '#0099CC'
+  const catColor = categoryColors[article.category] ?? '#00a896'
 
   return (
     <motion.article
@@ -35,13 +35,13 @@ function ArticleCard({ article, isDark, variant = 'default' }: ArticleCardProps)
       transition={{ duration: 0.25, ease: 'easeOut' }}
       className="group cursor-pointer rounded-xl overflow-hidden flex flex-col"
       style={{
-        background: isDark ? 'rgba(16, 13, 30, 0.8)' : 'rgba(255, 255, 255, 0.9)',
-        border: `1px solid ${isDark ? 'rgba(75, 0, 130, 0.3)' : 'rgba(75, 0, 130, 0.15)'}`,
+        background: isDark ? 'rgba(30, 14, 2, 0.85)' : 'rgba(255, 255, 255, 0.9)',
+        border: `1px solid ${isDark ? 'rgba(193, 68, 14, 0.3)' : 'rgba(193, 68, 14, 0.15)'}`,
         boxShadow: '0 4px 24px rgba(0,0,0,0.15)',
         transition: 'box-shadow 0.3s ease, border-color 0.3s ease',
       }}
       onMouseEnter={(e) => {
-        (e.currentTarget as HTMLElement).style.boxShadow = `0 8px 40px rgba(0, 153, 204, 0.25), 0 0 0 1px rgba(0, 153, 204, 0.4)`
+        (e.currentTarget as HTMLElement).style.boxShadow = `0 8px 40px rgba(0, 168, 150, 0.25), 0 0 0 1px rgba(0, 168, 150, 0.4)`
       }}
       onMouseLeave={(e) => {
         (e.currentTarget as HTMLElement).style.boxShadow = '0 4px 24px rgba(0,0,0,0.15)'
@@ -56,7 +56,7 @@ function ArticleCard({ article, isDark, variant = 'default' }: ArticleCardProps)
         />
         <div
           className="absolute inset-0"
-          style={{ background: 'linear-gradient(to top, rgba(10,6,18,0.7) 0%, transparent 60%)' }}
+          style={{ background: 'linear-gradient(to top, rgba(26,10,0,0.7) 0%, transparent 60%)' }}
         />
         <span
           className="absolute top-3 left-3 font-heading text-xs tracking-widest uppercase px-2.5 py-1 rounded-full"
@@ -71,7 +71,7 @@ function ArticleCard({ article, isDark, variant = 'default' }: ArticleCardProps)
           className="font-heading font-bold mb-2 leading-tight group-hover:text-[#0099CC] transition-colors"
           style={{
             fontSize: variant === 'large' ? '1.2rem' : '1rem',
-            color: isDark ? '#f8f4ff' : '#1a0a2e',
+            color: isDark ? '#fff8f0' : '#2a0e00',
           }}
         >
           {article.title}
@@ -79,7 +79,7 @@ function ArticleCard({ article, isDark, variant = 'default' }: ArticleCardProps)
         <p
           className="text-sm leading-relaxed mb-4 flex-1"
           style={{
-            color: isDark ? 'rgba(248,244,255,0.55)' : 'rgba(75,0,130,0.65)',
+            color: isDark ? 'rgba(255,248,240,0.6)' : 'rgba(122,58,0,0.7)',
             fontFamily: "'Lora', serif",
             fontStyle: 'italic',
           }}
@@ -89,18 +89,18 @@ function ArticleCard({ article, isDark, variant = 'default' }: ArticleCardProps)
 
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="text-xs" style={{ color: isDark ? 'rgba(248,244,255,0.45)' : 'rgba(75,0,130,0.5)' }}>
+            <span className="text-xs" style={{ color: isDark ? 'rgba(255,248,240,0.5)' : 'rgba(122,58,0,0.55)' }}>
               {article.author}
             </span>
-            <span style={{ color: isDark ? 'rgba(248,244,255,0.2)' : 'rgba(75,0,130,0.2)' }}>·</span>
-            <span className="flex items-center gap-1 text-xs" style={{ color: isDark ? 'rgba(248,244,255,0.4)' : 'rgba(75,0,130,0.5)' }}>
+            <span style={{ color: isDark ? 'rgba(255,248,240,0.2)' : 'rgba(193,68,14,0.2)' }}>·</span>
+            <span className="flex items-center gap-1 text-xs" style={{ color: isDark ? 'rgba(248,244,255,0.4)' : 'rgba(122,58,0,0.55)' }}>
               <Clock size={10} /> {article.readTime}
             </span>
           </div>
           <ArrowRight
             size={16}
             className="opacity-0 group-hover:opacity-100 transition-opacity"
-            style={{ color: '#0099CC' }}
+            style={{ color: '#00a896' }}
           />
         </div>
       </div>
@@ -125,7 +125,7 @@ export function ArticleGrid({ articles, isDark, title, subtitle }: ArticleGridPr
           {title && (
             <h2
               className="font-heading font-bold mb-2"
-              style={{ fontSize: 'clamp(1.5rem, 3vw, 2.2rem)', color: isDark ? '#f8f4ff' : '#1a0a2e' }}
+              style={{ fontSize: 'clamp(1.5rem, 3vw, 2.2rem)', color: isDark ? '#fff8f0' : '#2a0e00' }}
             >
               {title}
             </h2>

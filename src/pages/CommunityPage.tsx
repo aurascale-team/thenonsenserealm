@@ -25,17 +25,17 @@ function StarRating({ rating }: { rating: number }) {
 }
 
 const categoryColors: Record<string, string> = {
-  Book: '#0099CC',
+  Book: '#00a896',
   Game: '#9b59b6',
   'Strange Occurrence': '#e67e22',
   Series: '#27ae60',
 }
 
 export function CommunityPage({ isDark }: CommunityPageProps) {
-  const textColor = isDark ? '#f8f4ff' : '#1a0a2e'
-  const mutedColor = isDark ? 'rgba(248,244,255,0.55)' : 'rgba(75,0,130,0.65)'
-  const cardBg = isDark ? 'rgba(16,13,30,0.8)' : 'rgba(255,255,255,0.9)'
-  const cardBorder = isDark ? 'rgba(75,0,130,0.3)' : 'rgba(75,0,130,0.15)'
+  const textColor = isDark ? '#fff8f0' : '#2a0e00'
+  const mutedColor = isDark ? 'rgba(255,248,240,0.55)' : 'rgba(193,68,14,0.65)'
+  const cardBg = isDark ? 'rgba(30,14,2,0.8)' : 'rgba(255,255,255,0.9)'
+  const cardBorder = isDark ? 'rgba(193,68,14,0.3)' : 'rgba(193,68,14,0.15)'
 
   return (
     <div className="min-h-screen pt-24 max-w-7xl mx-auto px-6 pb-16">
@@ -45,7 +45,7 @@ export function CommunityPage({ isDark }: CommunityPageProps) {
         animate={{ opacity: 1, y: 0 }}
         className="mb-12"
       >
-        <span className="font-heading text-xs tracking-widest uppercase" style={{ color: '#0099CC' }}>
+        <span className="font-heading text-xs tracking-widest uppercase" style={{ color: '#00a896' }}>
           The Citizens Speak
         </span>
         <h1
@@ -55,9 +55,9 @@ export function CommunityPage({ isDark }: CommunityPageProps) {
           Community
         </h1>
         <p style={{ color: mutedColor, fontFamily: "'Lora', serif", fontStyle: 'italic', maxWidth: '42rem' }}>
-          Reviews from the realm's citizen-scholars, spotlights on exceptional humans, and dispatches from the weird.
+          Reviews, spotlights, and dispatches from the weird.
         </p>
-        <div className="mt-4 h-px w-32" style={{ background: 'linear-gradient(to right, #0099CC, transparent)' }} />
+        <div className="mt-4 h-px w-32" style={{ background: 'linear-gradient(to right, #00a896, transparent)' }} />
       </motion.div>
 
       {/* Spotlights */}
@@ -66,7 +66,7 @@ export function CommunityPage({ isDark }: CommunityPageProps) {
           <h2 className="font-heading font-bold text-2xl" style={{ color: textColor }}>
             This Month's Spotlights
           </h2>
-          <div className="h-px flex-1" style={{ background: `linear-gradient(to right, ${isDark ? 'rgba(75,0,130,0.4)' : 'rgba(75,0,130,0.2)'}, transparent)` }} />
+          <div className="h-px flex-1" style={{ background: `linear-gradient(to right, ${isDark ? 'rgba(193,68,14,0.4)' : 'rgba(193,68,14,0.2)'}, transparent)` }} />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -88,7 +88,7 @@ export function CommunityPage({ isDark }: CommunityPageProps) {
               <div
                 className="absolute inset-0"
                 style={{
-                  background: 'linear-gradient(135deg, rgba(75,0,130,0.6) 0%, rgba(10,6,18,0.8) 100%)',
+                  background: 'linear-gradient(135deg, rgba(193,68,14,0.6) 0%, rgba(26,10,0,0.8) 100%)',
                 }}
               />
 
@@ -109,7 +109,7 @@ export function CommunityPage({ isDark }: CommunityPageProps) {
                       <span
                         key={tag}
                         className="text-xs px-2 py-0.5 rounded-full"
-                        style={{ background: 'rgba(0,153,204,0.2)', color: '#0099CC', border: '1px solid rgba(0,153,204,0.3)' }}
+                        style={{ background: 'rgba(0,168,150,0.2)', color: '#00a896', border: '1px solid rgba(0,168,150,0.3)' }}
                       >
                         {tag}
                       </span>
@@ -118,7 +118,7 @@ export function CommunityPage({ isDark }: CommunityPageProps) {
                   <h3 className="font-heading font-bold text-2xl text-white mb-1">{s.name}</h3>
                   <div
                     className="text-sm mb-4 font-heading tracking-wider"
-                    style={{ color: 'rgba(248,244,255,0.6)' }}
+                    style={{ color: 'rgba(255,248,240,0.6)' }}
                   >
                     {s.descriptor}
                   </div>
@@ -126,7 +126,7 @@ export function CommunityPage({ isDark }: CommunityPageProps) {
                     className="text-sm leading-relaxed border-l-2 pl-4"
                     style={{
                       borderColor: '#FFD700',
-                      color: 'rgba(248,244,255,0.8)',
+                      color: 'rgba(255,248,240,0.8)',
                       fontFamily: "'Lora', serif",
                       fontStyle: 'italic',
                     }}
@@ -136,7 +136,7 @@ export function CommunityPage({ isDark }: CommunityPageProps) {
 
                   <button
                     className="mt-5 font-heading text-xs tracking-widest uppercase transition-colors hover:text-white"
-                    style={{ color: '#0099CC' }}
+                    style={{ color: '#00a896' }}
                   >
                     Read Full Spotlight →
                   </button>
@@ -153,9 +153,9 @@ export function CommunityPage({ isDark }: CommunityPageProps) {
           <h2 className="font-heading font-bold text-2xl" style={{ color: textColor }}>
             Citizen Reviews
           </h2>
-          <div className="h-px flex-1" style={{ background: `linear-gradient(to right, ${isDark ? 'rgba(75,0,130,0.4)' : 'rgba(75,0,130,0.2)'}, transparent)` }} />
+          <div className="h-px flex-1" style={{ background: `linear-gradient(to right, ${isDark ? 'rgba(193,68,14,0.4)' : 'rgba(193,68,14,0.2)'}, transparent)` }} />
           <button
-            className="font-heading text-xs tracking-wider uppercase transition-colors hover:text-[#0099CC]"
+            className="font-heading text-xs tracking-wider uppercase transition-colors hover:text-[#00a896]"
             style={{ color: mutedColor, whiteSpace: 'nowrap' }}
           >
             Submit a Review
@@ -164,7 +164,7 @@ export function CommunityPage({ isDark }: CommunityPageProps) {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {citizenReviews.map((review, i) => {
-            const catColor = categoryColors[review.category] ?? '#0099CC'
+            const catColor = categoryColors[review.category] ?? '#00a896'
             return (
               <motion.div
                 key={review.id}
@@ -199,7 +199,7 @@ export function CommunityPage({ isDark }: CommunityPageProps) {
                     className="text-right text-xs"
                     style={{ color: mutedColor }}
                   >
-                    <div className="font-heading tracking-wider mb-0.5" style={{ color: '#0099CC' }}>
+                    <div className="font-heading tracking-wider mb-0.5" style={{ color: '#00a896' }}>
                       {review.reviewer}
                     </div>
                     <div>{review.date}</div>
@@ -236,9 +236,9 @@ export function CommunityPage({ isDark }: CommunityPageProps) {
           className="mt-12 text-center p-10 rounded-2xl"
           style={{
             background: isDark
-              ? 'linear-gradient(135deg, rgba(75,0,130,0.2) 0%, rgba(0,153,204,0.1) 100%)'
-              : 'linear-gradient(135deg, rgba(75,0,130,0.06) 0%, rgba(0,153,204,0.04) 100%)',
-            border: '1px solid rgba(75,0,130,0.25)',
+              ? 'linear-gradient(135deg, rgba(193,68,14,0.2) 0%, rgba(0,168,150,0.1) 100%)'
+              : 'linear-gradient(135deg, rgba(193,68,14,0.06) 0%, rgba(0,168,150,0.04) 100%)',
+            border: '1px solid rgba(193,68,14,0.25)',
           }}
         >
           <div className="text-3xl mb-4">📜</div>
@@ -249,14 +249,14 @@ export function CommunityPage({ isDark }: CommunityPageProps) {
             className="mb-6 max-w-sm mx-auto text-sm"
             style={{ color: mutedColor, fontFamily: "'Lora', serif", fontStyle: 'italic' }}
           >
-            Whether it's a book, game, film, or unexplained phenomenon — the Realm wants to know.
+            Book, game, film, or unexplained phenomenon — the Realm wants to know.
           </p>
           <button
             className="px-8 py-3 rounded-full font-heading text-sm tracking-wider uppercase font-bold transition-all hover:scale-105"
             style={{
-              background: 'linear-gradient(135deg, #4B0082, #0099CC)',
-              color: '#f8f4ff',
-              boxShadow: '0 0 20px rgba(75,0,130,0.3)',
+              background: 'linear-gradient(135deg, #c1440e, #00a896)',
+              color: '#fff8f0',
+              boxShadow: '0 0 20px rgba(193,68,14,0.3)',
             }}
           >
             Submit Your Review

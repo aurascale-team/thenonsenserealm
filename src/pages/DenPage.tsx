@@ -9,10 +9,10 @@ interface DenPageProps {
 function StatBar({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex flex-col gap-0.5">
-      <span className="text-xs font-heading tracking-wider uppercase" style={{ color: 'rgba(0,153,204,0.8)', fontSize: '0.65rem' }}>
+      <span className="text-xs font-heading tracking-wider uppercase" style={{ color: 'rgba(0,168,150,0.8)', fontSize: '0.65rem' }}>
         {label}
       </span>
-      <span className="text-xs" style={{ color: '#f8f4ff', fontFamily: "'Lora', serif" }}>
+      <span className="text-xs" style={{ color: '#fff8f0', fontFamily: "'Lora', serif" }}>
         {value}
       </span>
     </div>
@@ -22,10 +22,10 @@ function StatBar({ label, value }: { label: string; value: string }) {
 export function DenPage({ isDark }: DenPageProps) {
   const [flipped, setFlipped] = useState<number | null>(null)
 
-  const textColor = isDark ? '#f8f4ff' : '#1a0a2e'
-  const mutedColor = isDark ? 'rgba(248,244,255,0.55)' : 'rgba(75,0,130,0.65)'
-  const cardBg = isDark ? 'rgba(16,13,30,0.9)' : 'rgba(255,255,255,0.95)'
-  const cardBorder = isDark ? 'rgba(75,0,130,0.35)' : 'rgba(75,0,130,0.2)'
+  const textColor = isDark ? '#fff8f0' : '#2a0e00'
+  const mutedColor = isDark ? 'rgba(255,248,240,0.55)' : 'rgba(193,68,14,0.65)'
+  const cardBg = isDark ? 'rgba(30,14,2,0.9)' : 'rgba(255,255,255,0.95)'
+  const cardBorder = isDark ? 'rgba(193,68,14,0.35)' : 'rgba(193,68,14,0.2)'
 
   return (
     <div className="min-h-screen pt-24 max-w-7xl mx-auto px-6 pb-16">
@@ -45,8 +45,7 @@ export function DenPage({ isDark }: DenPageProps) {
           The Den
         </h1>
         <p style={{ color: mutedColor, fontFamily: "'Lora', serif", fontStyle: 'italic', maxWidth: '42rem' }}>
-          The fine individuals responsible for making the Nonsense Realm. Hover their cards to reveal their stats.
-          They have been warned.
+          The people behind the Realm. Hover to reveal their stats. They have been warned.
         </p>
         <div className="mt-4 h-px w-32" style={{ background: 'linear-gradient(to right, #FFD700, transparent)' }} />
       </motion.div>
@@ -101,7 +100,7 @@ export function DenPage({ isDark }: DenPageProps) {
                     />
                     <div
                       className="absolute inset-0"
-                      style={{ background: 'linear-gradient(to top, rgba(10,6,18,0.85) 0%, transparent 60%)' }}
+                      style={{ background: 'linear-gradient(to top, rgba(26,10,0,0.85) 0%, transparent 60%)' }}
                     />
                     <div className="absolute bottom-0 left-0 right-0 p-4">
                       <div
@@ -122,9 +121,9 @@ export function DenPage({ isDark }: DenPageProps) {
                     <div
                       className="text-xs px-2 py-0.5 rounded-full inline-flex w-fit"
                       style={{
-                        background: 'rgba(0,153,204,0.1)',
-                        color: '#0099CC',
-                        border: '1px solid rgba(0,153,204,0.3)',
+                        background: 'rgba(0,168,150,0.1)',
+                        color: '#00a896',
+                        border: '1px solid rgba(0,168,150,0.3)',
                         fontFamily: "'Lora', serif",
                         fontStyle: 'italic',
                       }}
@@ -139,13 +138,13 @@ export function DenPage({ isDark }: DenPageProps) {
                     </p>
                     <div className="flex items-center justify-between text-xs" style={{ color: mutedColor }}>
                       <span>{member.pronouns}</span>
-                      <span style={{ color: '#0099CC' }}>{member.articles} articles</span>
+                      <span style={{ color: '#00a896' }}>{member.articles} articles</span>
                     </div>
                   </div>
 
                   <div
                     className="absolute top-3 right-3 text-xs px-2 py-0.5 rounded-full"
-                    style={{ background: 'rgba(0,0,0,0.5)', color: 'rgba(248,244,255,0.5)', backdropFilter: 'blur(4px)' }}
+                    style={{ background: 'rgba(0,0,0,0.5)', color: 'rgba(255,248,240,0.5)', backdropFilter: 'blur(4px)' }}
                   >
                     hover for stats
                   </div>
@@ -160,23 +159,23 @@ export function DenPage({ isDark }: DenPageProps) {
                   transition={{ duration: 0.3, ease: 'easeInOut' }}
                   className="absolute inset-0 rounded-2xl p-6 flex flex-col"
                   style={{
-                    background: 'linear-gradient(135deg, rgba(75,0,130,0.9) 0%, rgba(10,6,18,0.95) 100%)',
-                    border: '1px solid rgba(0,153,204,0.5)',
-                    boxShadow: '0 0 30px rgba(75,0,130,0.4), 0 8px 32px rgba(0,0,0,0.4)',
+                    background: 'linear-gradient(135deg, rgba(193,68,14,0.9) 0%, rgba(26,10,0,0.95) 100%)',
+                    border: '1px solid rgba(0,168,150,0.5)',
+                    boxShadow: '0 0 30px rgba(193,68,14,0.4), 0 8px 32px rgba(0,0,0,0.4)',
                   }}
                 >
                   <div className="mb-4">
                     <div className="font-display font-bold text-lg" style={{ color: '#FFD700' }}>
                       {member.name}
                     </div>
-                    <div className="font-heading text-xs tracking-widest uppercase mt-1" style={{ color: '#0099CC' }}>
+                    <div className="font-heading text-xs tracking-widest uppercase mt-1" style={{ color: '#00a896' }}>
                       Character Stats
                     </div>
                   </div>
 
                   <div
                     className="h-px mb-5"
-                    style={{ background: 'linear-gradient(to right, rgba(0,153,204,0.6), transparent)' }}
+                    style={{ background: 'linear-gradient(to right, rgba(0,168,150,0.6), transparent)' }}
                   />
 
                   <div className="grid grid-cols-1 gap-4 flex-1">
@@ -187,10 +186,10 @@ export function DenPage({ isDark }: DenPageProps) {
 
                   <div
                     className="mt-5 pt-4"
-                    style={{ borderTop: '1px solid rgba(0,153,204,0.2)' }}
+                    style={{ borderTop: '1px solid rgba(0,168,150,0.2)' }}
                   >
                     <div className="flex items-center justify-between">
-                      <span className="text-xs" style={{ color: 'rgba(248,244,255,0.4)' }}>
+                      <span className="text-xs" style={{ color: 'rgba(255,248,240,0.4)' }}>
                         Articles published
                       </span>
                       <span
@@ -231,8 +230,8 @@ export function DenPage({ isDark }: DenPageProps) {
         viewport={{ once: true }}
         className="mt-16 text-center p-10 rounded-2xl"
         style={{
-          background: isDark ? 'rgba(0,153,204,0.06)' : 'rgba(0,153,204,0.04)',
-          border: '1px solid rgba(0,153,204,0.2)',
+          background: isDark ? 'rgba(0,168,150,0.06)' : 'rgba(0,168,150,0.04)',
+          border: '1px solid rgba(0,168,150,0.2)',
         }}
       >
         <div className="text-3xl mb-4">✨</div>
@@ -246,15 +245,14 @@ export function DenPage({ isDark }: DenPageProps) {
           className="mb-6 max-w-md mx-auto"
           style={{ color: mutedColor, fontFamily: "'Lora', serif", fontStyle: 'italic' }}
         >
-          The Realm accepts submissions of fiction, theory, art, and things that defy categorization.
-          Especially those.
+          Fiction, theory, art, and things that defy categorization. Especially those.
         </p>
         <button
           className="px-8 py-3 rounded-full font-heading text-sm tracking-wider uppercase transition-all hover:scale-105"
           style={{
-            background: 'rgba(0,153,204,0.15)',
-            color: '#0099CC',
-            border: '1px solid rgba(0,153,204,0.4)',
+            background: 'rgba(0,168,150,0.15)',
+            color: '#00a896',
+            border: '1px solid rgba(0,168,150,0.4)',
           }}
         >
           Submit to the Realm

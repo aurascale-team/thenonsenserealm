@@ -3,18 +3,18 @@
 @import "tailwindcss";
 
 @theme {
-  --color-teal: #0099CC;
-  --color-teal-light: #00bfff;
-  --color-teal-dark: #007aa3;
-  --color-indigo: #4B0082;
-  --color-indigo-light: #6a0db5;
-  --color-indigo-dark: #35005c;
+  --color-teal: #00a896;
+  --color-teal-light: #00c9b1;
+  --color-teal-dark: #007a6e;
+  --color-indigo: #c1440e;
+  --color-indigo-light: #e05a1a;
+  --color-indigo-dark: #8a2f07;
   --color-gold: #FFD700;
   --color-gold-dark: #d4a800;
-  --color-void: #0a0612;
-  --color-void-surface: #100d1e;
-  --color-void-border: #2a1f4a;
-  --color-realm-white: #f8f4ff;
+  --color-void: #1a0a00;
+  --color-void-surface: #2a1500;
+  --color-void-border: #4a2a10;
+  --color-realm-white: #fff8f0;
 
   --font-display: 'Cinzel Decorative', serif;
   --font-heading: 'Cinzel', serif;
@@ -40,7 +40,7 @@ body {
 .light {
   color-scheme: light;
   --bg: var(--color-realm-white);
-  --fg: #1a0a2e;
+  --fg: #2a0e00;
 }
 
 /* Scrollbar */
@@ -51,23 +51,23 @@ body {
   background: var(--color-void);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-indigo);
+  background: #7a3a00;
   border-radius: 3px;
 }
 
 /* Glow utilities */
 .glow-teal {
-  box-shadow: 0 0 20px rgba(0, 153, 204, 0.4), 0 0 60px rgba(0, 153, 204, 0.15);
+  box-shadow: 0 0 20px rgba(0, 168, 150, 0.4), 0 0 60px rgba(0, 168, 150, 0.15);
 }
 .glow-gold {
   box-shadow: 0 0 20px rgba(255, 215, 0, 0.5), 0 0 60px rgba(255, 215, 0, 0.2);
 }
 .glow-indigo {
-  box-shadow: 0 0 20px rgba(75, 0, 130, 0.6), 0 0 60px rgba(75, 0, 130, 0.25);
+  box-shadow: 0 0 20px rgba(193, 68, 14, 0.6), 0 0 60px rgba(193, 68, 14, 0.25);
 }
 
 .text-glow-teal {
-  text-shadow: 0 0 20px rgba(0, 153, 204, 0.8), 0 0 40px rgba(0, 153, 204, 0.4);
+  text-shadow: 0 0 20px rgba(0, 168, 150, 0.8), 0 0 40px rgba(0, 168, 150, 0.4);
 }
 .text-glow-gold {
   text-shadow: 0 0 15px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.4);
@@ -114,7 +114,7 @@ body {
   top: 0;
   left: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--color-teal), var(--color-gold));
+  background: linear-gradient(90deg, #c1440e, #FFD700, #00a896);
   z-index: 100;
   transition: width 0.1s ease;
 }
@@ -141,5 +141,5 @@ body {
 }
 .card-hover:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 40px rgba(0, 153, 204, 0.3), 0 0 1px rgba(0, 153, 204, 0.8);
+  box-shadow: 0 8px 40px rgba(0, 168, 150, 0.3), 0 0 1px rgba(0, 168, 150, 0.8);
 }
