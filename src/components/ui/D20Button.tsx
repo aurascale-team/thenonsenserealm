@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { articles } from '../../data/content'
+import { volumes } from '../../data/content'
 
 interface D20ButtonProps {
   isDark: boolean
@@ -10,11 +10,10 @@ export function D20Button({ isDark: _isDark }: D20ButtonProps) {
   const [tooltip, setTooltip] = useState(false)
 
   const handleRoll = () => {
-    const random = articles[Math.floor(Math.random() * articles.length)]
+    const random = volumes[Math.floor(Math.random() * volumes.length)]
     setTooltip(true)
     setTimeout(() => setTooltip(false), 3000)
-    // In a real app: navigate to random article
-    console.log('Random article:', random.title)
+    console.log('Random volume:', random.title)
   }
 
   return (
@@ -33,7 +32,7 @@ export function D20Button({ isDark: _isDark }: D20ButtonProps) {
               boxShadow: '0 0 20px rgba(0, 168, 150, 0.3)',
             }}
           >
-            Rolling for a random article from the Realm...
+            Check our Instagram for the latest volume updates!
           </motion.div>
         )}
       </AnimatePresence>

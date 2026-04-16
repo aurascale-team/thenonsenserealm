@@ -220,7 +220,7 @@ export function DoorIntro({ onComplete }: DoorIntroProps) {
                 transformOrigin: 'left center',
                 transformStyle: 'preserve-3d',
               }}
-              animate={{ rotateY: phase === 'opening' ? -82 : 0 }}
+              animate={{ rotateY: phase === 'opening' ? 82 : 0 }}
               transition={{ duration: 1.7, ease: [0.2, 0.05, 0.1, 1.0] }}
             >
               {/* Outer door frame */}

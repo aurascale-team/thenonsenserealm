@@ -1,350 +1,132 @@
+// ── Ticker ──────────────────────────────────────────────────────────────────
 export const tickerItems = [
-  "⚡ Scientists confirm dragons dream in hexadecimal",
-  "🌀 Local wizard forgets password to dimension #7",
-  "🐉 Annual Dragon Census reveals 40% prefer podcasts over pillaging",
-  "🌙 Moon files restraining order against tide poets",
-  "🎲 d20 rolls natural 1 on existence — philosophers weep",
-  "📚 Librarian discovers entire wing is fiction but it's real",
-  "🔭 Telescope accidentally photographs another telescope looking back",
-  "🧩 Reality patched to version 3.1.4; changelog redacted",
-  "🦑 Squid insists it invented abstract expressionism",
-  "⭐ Stars rated 4.2/5 — 'too far away, would not commute'",
-  "🌊 Ocean demands recognition as sentient entity; denied on technicality",
-  "🕰️ Time runs 11 minutes late, blames traffic in dimension β",
-  "🔮 Crystal ball switches to subscription model; seers furious",
-];
+  "⚡ Submissions open all year round — max 5,000 words",
+  "🐉 We want weird, wacky, outlandish sci-fi and fantasy",
+  "📚 Three volumes a year — flash fiction, short stories, poetry",
+  "🌀 No AI submissions accepted",
+  "🌙 Based in the UK — boosting publishing opportunities nationwide",
+  "🎲 All genres: cyberpunk, biopunk, gothic, speculative, weird, and more",
+  "⭐ Every submission treated equally — published or not",
+  "🔮 Find us on Instagram: @thenonsenserealm",
+  "🌊 We retain no rights — all copyright stays with the writer",
+  "📜 Email: thenonsenserealmmagazine@gmail.com",
+]
 
-export const currentIssue = {
-  volume: "VII",
-  era: "The Year of the Fractured Sky",
-  coverStory: {
-    title: "When the Algorithm Dreams of Sheep",
-    subtitle: "Artificial minds, mythological beasts, and the thin line between computation and consciousness.",
-    author: "Vesper Nighthollow",
-    category: "Theories",
-    readTime: "14 min",
-    image: "https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=1600&q=80",
-    excerpt: "What happens when the machine closes its virtual eyes and wanders through electric corridors where dragons made of data coil around pillars of forgotten code?",
-  }
-};
+// ── About ────────────────────────────────────────────────────────────────────
+export const aboutContent = {
+  origin: `The Nonsense Realm Magazine is a passion project, co-founded by four editors with a burning love for sci-fi and fantasy. Frankly, we created the magazine out of spite—we're actually quite venomous creatures in general. We desperately need more sci-fi and fantasy stories in mainstream literary magazines, and that's pretty much all we're concerned with. We want more weird, wacky, outlandish stories. Why not make that space ourselves?`,
+  whatWeLookFor: `The magazine welcomes all genres and sub-genres surrounding sci-fi and fantasy fiction, and we're not prejudiced against poetry, either—we want that too. In fact, we're looking for fiction with an experimental flare; this can be in subject matter, or in form itself.`,
+  genres: [
+    "Eco-criticism", "Cyberpunk", "Biopunk", "Lost world", "Metafiction",
+    "Apocalyptic", "Horror", "Sci-fi", "Fantasy", "Speculative",
+    "Genre-bending", "Satire", "Weird", "Gothic",
+  ],
+  inspiredBy: [
+    "Stephen King", "H. G. Wells", "J. R. R. Tolkien", "George Saunders",
+    "J. G. Ballard", "Kurt Vonnegut", "Don DeLillo", "Kazuo Ishiguro",
+    "Thomas Pynchon", "Julian Barnes", "John Fowles", "Jeff Vandermeer",
+    "Alex Pheby", "Asako Yuzuki", "Sayaka Murata", "Kylie Whitehead",
+    "Helen Macdonald", "Sin Blaché",
+  ],
+  whoWeLookFor: `The publishing industry has many barriers; we're not adding any more. We're looking for writers with a love of sci-fi and fantasy, and a penchant for the unusual. Whether you've been published before, or if you have not two words to your name, each submission is treated equally. We're big on community; if your submission is chosen for our next issue, we'll also feature you in the magazine, showcasing who you are, what you're up to, and any future projects.`,
+  theSense: `The Nonsense Realm Magazine is a digital-based magazine, run by a group of four friends. We aim to publish three volumes across the year (submissions-depending), chock-a-block full of flash fiction, short stories, and poetry. We'll also spotlight our favourite underground reads, post reviews, and boost all sci-fi and fantasy related events and organisations. We're based in the UK and will regularly promote opportunities within the publishing industry to help new authors and spearhead accessibility for all.`,
+  contact: {
+    instagram: "@thenonsenserealm",
+    email: "thenonsenserealmmagazine@gmail.com",
+  },
+}
 
-export const articles = [
-  {
-    id: "1",
-    title: "The Cartography of Imaginary Places",
-    subtitle: "Mapping worlds that never were — and never will be",
-    author: "Orion Blackwell",
-    category: "Art",
-    readTime: "9 min",
-    volume: "VII",
-    era: "The Year of the Fractured Sky",
-    image: "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&q=80",
-    excerpt: "A mapmaker's confession: every map is fiction dressed as geography. The question is not whether the map is accurate, but whether it is beautiful.",
-    featured: true,
-  },
-  {
-    id: "2",
-    title: "Goblin Markets and DeFi: A Parallel Study",
-    subtitle: "What Victorian fairy tales can teach us about crypto",
-    author: "Petra Moonwhisper",
-    category: "Tech",
-    readTime: "11 min",
-    volume: "VII",
-    era: "The Year of the Fractured Sky",
-    image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&q=80",
-    excerpt: "Come buy, come buy — but read the smart contract first. An unexpected journey through Rossetti's poem and the mechanics of trustless exchange.",
-    featured: true,
-  },
-  {
-    id: "3",
-    title: "My Summer With a Sentient Fog",
-    subtitle: "A personal essay",
-    author: "Damaris Vex",
-    category: "Fiction",
-    readTime: "7 min",
-    volume: "VII",
-    era: "The Year of the Fractured Sky",
-    image: "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?w=800&q=80",
-    excerpt: "It arrived on a Tuesday, which is the most unremarkable day for sentient weather phenomena. By Thursday, it had opinions about my furniture arrangement.",
-    featured: true,
-  },
-  {
-    id: "4",
-    title: "The Architecture of Fever Dreams",
-    subtitle: "Gaudi, Lovecraft, and the sublime geometry of unreason",
-    author: "Vesper Nighthollow",
-    category: "Art",
-    readTime: "12 min",
-    volume: "VI",
-    era: "The Year of the Dragon",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
-    excerpt: "When architecture stops being functional and starts being ontological — buildings that ask not what they house, but what houses them.",
-    featured: false,
-  },
-  {
-    id: "5",
-    title: "Thirteen Unsolved Puzzles from the Void",
-    subtitle: "Some questions don't have answers. These have worse.",
-    author: "Orion Blackwell",
-    category: "Theories",
-    readTime: "6 min",
-    volume: "VI",
-    era: "The Year of the Dragon",
-    image: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=800&q=80",
-    excerpt: "A listicle with no answers, arranged in order of existential severity. Pair with good tea and an unwillingness to sleep.",
-    featured: false,
-  },
-  {
-    id: "6",
-    title: "How I Taught My Library to Haunt Me",
-    subtitle: "On bibliomancy and the memory palace as ghost house",
-    author: "Cressida Moon",
-    category: "Fiction",
-    readTime: "8 min",
-    volume: "V",
-    era: "The Year of the Gilded Comet",
-    image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&q=80",
-    excerpt: "Every book I've ever owned still lives somewhere in my nervous system. The trick is making them pay rent.",
-    featured: false,
-  },
-  {
-    id: "7",
-    title: "Field Notes: The Convention of Impossible Creatures",
-    subtitle: "Annual gathering, dimensional hotel, questionable catering",
-    author: "Damaris Vex",
-    category: "Tech",
-    readTime: "10 min",
-    volume: "V",
-    era: "The Year of the Gilded Comet",
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
-    excerpt: "Attendance: three chimeras, a self-aware spreadsheet, what appeared to be a very old idea given physical form, and me.",
-    featured: false,
-  },
-];
+// ── Submissions ──────────────────────────────────────────────────────────────
+export const submissionsContent = {
+  intro: `If that sounds like you, we want to hear from you. Send all submissions to thenonsenserealmmagazine@gmail.com`,
+  guidelines: [
+    "Deadline: we accept submissions all year round. Please note, volumes occur three times a year.",
+    "No minimum word count, but a maximum of 5,000 words for flash or short fiction, or 3 pages for poetry.",
+    "Please format your submission as a Word or Google Doc, and attach it to your submission email.",
+    "We are a digital magazine, but we welcome mixed media writing.",
+    "We do not accept previously published work.",
+    "We do not accept AI work.",
+    "When submitting, please include a brief summary of your piece.",
+    "We are open to all genres of sci-fi and fantasy, but for specific information on volume themes, please check our Instagram for updates.",
+    "Please send all submissions to thenonsenserealmmagazine@gmail.com",
+  ],
+  genres: [
+    "Eco-criticism", "Cyberpunk", "Biopunk", "Lost world", "Metafiction",
+    "Apocalyptic", "Horror", "Sci-fi", "Fantasy", "Speculative",
+    "Genre-bending", "Satire", "Weird", "Gothic",
+  ],
+  email: "thenonsenserealmmagazine@gmail.com",
+  instagram: "@thenonsenserealm",
+}
 
+// ── Copyright ────────────────────────────────────────────────────────────────
+export const copyrightContent = {
+  body: `It's important that all of our writers retain the copyright to their own work, therefore all contributors retain their own publication rights. All submissions to The Nonsense Realm are required to be unpublished. We cannot accept responsibility or liability for any infringement of copyright or otherwise arising out of publication. However, should work be previously published, The Nonsense Realm credits the appropriate publishers. By submitting to The Nonsense Realm, our writers agree that they are happy for The Nonsense Realm to publish their work on our website and across our social media platforms, which include Instagram, Facebook, and SubStack.`,
+  platforms: ["Instagram", "Facebook", "SubStack"],
+  year: 2026,
+}
+
+// ── Editors ──────────────────────────────────────────────────────────────────
+export const editors = [
+  {
+    name: "Hannah",
+    image: "/hannah.png",
+    bio: `I am a lover of fantasy, gothic, dystopian, and feminist literature. I enjoy reading about complex political systems, rebellion, magic, and the supernatural. Some of my favourite books include The Handmaid's Tale, The Picture of Dorian Grey, and The Song of Achilles. If I am not reading, I enjoy all kinds of crafts, mostly cross stitch and scrapbooking, often with my cat curled up in my lap.`,
+    favourites: ["The Handmaid's Tale", "The Picture of Dorian Grey", "The Song of Achilles"],
+    interests: ["Fantasy", "Gothic", "Dystopian", "Feminist literature"],
+  },
+  {
+    name: "Sophie",
+    image: "/sophie.png",
+    bio: `A lapsed fantasy fan, waylaid by sci-fi, just getting back into the genre. Recent reads: Under the Eye of the Big Bird by Hiromi Kawakami, Lirael by Garth Nix, Doom: Scarydarkfast by Dan Pinchbeck, The Long Way to a Small Angry Planet by Becky Chambers. Currently reading Some Desperate Glory by Emily Tesh.`,
+    favourites: ["Under the Eye of the Big Bird", "Lirael", "The Long Way to a Small Angry Planet"],
+    interests: ["Sci-fi", "Fantasy", "New Wave"],
+  },
+  {
+    name: "Laura",
+    image: "/laura.png",
+    bio: `I love sci-fi, fantasy, and everything in between. My favourite science fiction novel is H. G. Wells' War of the Worlds, and my all-time favourite series is Stephen King's The Dark Tower novels—which should tell you all you need to know about me.
+
+I am keen on stories all about character; for me, complex worldbuilding only hits if it's tied up with character: strengths, hubris, evolution—everything. Standout stories which I think do this incredibly well: Alex Pheby's Mordew, Stephen King's The Stand, and Agustina Bazterrica's Tender is the Flesh. I love work which sits on the fringes of sci-fi and fantasy, anything by Kurt Vonnegut, Don DeLillo, Kazuo Ishiguro, Thomas Pynchon, Julian Barnes, and John Fowles.`,
+    favourites: ["War of the Worlds", "The Dark Tower", "Mordew", "The Stand", "Tender is the Flesh"],
+    interests: ["Sci-fi", "Fantasy", "Literary fiction", "Character-driven fiction"],
+  },
+  {
+    name: "Daria",
+    image: "/daria.png",
+    bio: `Passionate about Tolkien and in constant need of coffee. Let's discuss Middle-earth while we contemplate ecocriticism, feminism, and taking down capitalism. I hold a BA in English and Journalism and an MA in English Literature, with both dissertations focusing on fantasy criticism in contemporary literature.
+
+I'm excited to read stories where our heroes challenge corrupted higher powers, on dragons, with swords and bows, and casting spells. I don't mind a touch of spicy romance sprinkled on top, and please delight me with an awesome map and a complex fantasy world where we lose ourselves completely and forget about our mundane lives.
+
+I'm happy to edit and work with any type of fantasy subgenres: sword and sorcery, romantasy, urban fantasy, or mythic fantasy. One editor to feedback them all and in the The Nonsense Realm Magazine publish them.`,
+    favourites: ["The Assassin's Apprentice", "The Bear and the Nightingale", "Book of Night", "The Witch and the Tsar"],
+    interests: ["Epic fantasy", "Romantasy", "Urban fantasy", "Mythic fantasy", "Ecocriticism"],
+    recentReads: ["The Assassin's Apprentice series by Robin Hobb", "The Bear and the Nightingale series by Katherine Arden", "Book of Night duology by Holly Black", "The Witch and the Tsar by Olesya Salnikova Gilmore"],
+  },
+]
+
+// ── Volumes ──────────────────────────────────────────────────────────────────
+// Placeholder — real volumes will be added as the magazine publishes
 export const volumes = [
   {
-    number: "VII",
-    era: "The Year of the Fractured Sky",
-    year: 2026,
-    coverImage: "https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=600&q=80",
-    articleCount: 12,
-    color: "#00a896",
-  },
-  {
-    number: "VI",
-    era: "The Year of the Dragon",
-    year: 2025,
-    coverImage: "https://images.unsplash.com/photo-1502134249126-9f3755a50d78?w=600&q=80",
-    articleCount: 14,
-    color: "#c1440e",
-  },
-  {
-    number: "V",
-    era: "The Year of the Gilded Comet",
-    year: 2024,
-    coverImage: "https://images.unsplash.com/photo-1444080748397-f442aa105c5a?w=600&q=80",
-    articleCount: 11,
-    color: "#FFD700",
-  },
-  {
-    number: "IV",
-    era: "The Age of the Silver Moth",
-    year: 2023,
-    coverImage: "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=600&q=80",
-    articleCount: 13,
-    color: "#C0C0C0",
-  },
-  {
-    number: "III",
-    era: "The Season of Impossible Things",
-    year: 2022,
-    coverImage: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=600&q=80",
-    articleCount: 10,
-    color: "#00bfff",
-  },
-  {
-    number: "II",
-    era: "The First Fracture",
-    year: 2021,
-    coverImage: "https://images.unsplash.com/photo-1536514498073-50e69d39c6cf?w=600&q=80",
-    articleCount: 8,
-    color: "#9b59b6",
-  },
-  {
     number: "I",
-    era: "The Genesis of Nonsense",
-    year: 2020,
-    coverImage: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=600&q=80",
-    articleCount: 7,
-    color: "#e74c3c",
+    title: "Volume I",
+    year: 2026,
+    status: "upcoming" as const,
+    coverImage: "https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=600&q=80",
+    color: "#00a896",
+    description: "Our debut issue — call for submissions open now.",
+    stories: [] as { title: string; author: string; genre: string }[],
   },
-];
+]
 
-export const team = [
-  {
-    name: "Maren Ashveil",
-    title: "Grand Architect of Verbiage",
-    realTitle: "Editor-in-Chief",
-    avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&q=80",
-    bio: "Maren has been translating interdimensional communiqués into readable prose for seven years. She once won a staring contest with a basilisk.",
-    stats: {
-      "Favorite Trope": "Unreliable Narrator",
-      "Nonsense Level": "∞ / 10",
-      "Preferred Void": "The one between paragraphs",
-      "Dragon Affinity": "High",
-    },
-    articles: 47,
-    pronouns: "she/her",
-  },
-  {
-    name: "Corvus Nightmere",
-    title: "High Keeper of Visual Enigmas",
-    realTitle: "Art Director",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80",
-    bio: "Corvus sees in seventeen colors not yet named by science. His designs have been described as 'aggressively beautiful' and 'mildly threatening.'",
-    stats: {
-      "Favorite Trope": "The Chosen One (ironic)",
-      "Nonsense Level": "8.7 / 10",
-      "Preferred Void": "Negative space",
-      "Dragon Affinity": "Critical",
-    },
-    articles: 12,
-    pronouns: "he/him",
-  },
-  {
-    name: "Petra Moonwhisper",
-    title: "Conjurer of Technical Sorcery",
-    realTitle: "Technology Editor",
-    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80",
-    bio: "Petra once wrote a compiler that gained sentience, apologized, and asked for dental coverage. She declined but still sends it birthday cards.",
-    stats: {
-      "Favorite Trope": "Prophecy Subversion",
-      "Nonsense Level": "6.2 / 10",
-      "Preferred Void": "Off-by-one errors",
-      "Dragon Affinity": "Moderate",
-    },
-    articles: 29,
-    pronouns: "she/they",
-  },
-  {
-    name: "Orion Blackwell",
-    title: "Oracle of Theoretical Aberrations",
-    realTitle: "Theories Editor",
-    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80",
-    bio: "Orion has published papers on topics ranging from 'The Thermodynamics of Plot Holes' to 'Why Centaurs Are Fundamentally an Ergonomic Disaster.'",
-    stats: {
-      "Favorite Trope": "The Mentor Dies",
-      "Nonsense Level": "9.4 / 10",
-      "Preferred Void": "Philosophical dead ends",
-      "Dragon Affinity": "Theoretical",
-    },
-    articles: 38,
-    pronouns: "he/him",
-  },
-  {
-    name: "Damaris Vex",
-    title: "Chronicler of Strange Occurrences",
-    realTitle: "Fiction Editor",
-    avatar: "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=400&q=80",
-    bio: "Damaris writes fiction and field reports with equal conviction. The distinction, she insists, is largely administrative.",
-    stats: {
-      "Favorite Trope": "Lovecraftian Librarian",
-      "Nonsense Level": "7.8 / 10",
-      "Preferred Void": "The space under stairs",
-      "Dragon Affinity": "Very High",
-    },
-    articles: 54,
-    pronouns: "she/her",
-  },
-  {
-    name: "Vesper Nighthollow",
-    title: "Wandering Correspondent of the Between",
-    realTitle: "Senior Writer",
-    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80",
-    bio: "Vesper files dispatches from places that technically don't exist. The postal service has adapted. Mostly.",
-    stats: {
-      "Favorite Trope": "Wrong Portal",
-      "Nonsense Level": "8.1 / 10",
-      "Preferred Void": "The one before morning",
-      "Dragon Affinity": "Personal relationship",
-    },
-    articles: 61,
-    pronouns: "they/them",
-  },
-];
+// ── Nav pages ────────────────────────────────────────────────────────────────
+export type PageId = 'home' | 'volumes' | 'editors' | 'about' | 'submissions' | 'copyright'
 
-export const citizenReviews = [
-  {
-    id: "r1",
-    reviewer: "QuantumPilgrim_99",
-    title: "The Peripheral — by William Gibson",
-    category: "Book",
-    rating: 4.5,
-    content: "Gibson somehow made time travel feel like a Tuesday. Haunting, labyrinthine, and written like the future is already slightly disappointed in us. Perfect Nonsense Realm reading.",
-    date: "March 2026",
-    tags: ["sci-fi", "time", "cyberpunk"],
-  },
-  {
-    id: "r2",
-    reviewer: "MirrorWitch_Hex",
-    title: "Disco Elysium",
-    category: "Game",
-    rating: 5,
-    content: "What if your entire personality was a committee of chaotic voices, and they were trying to solve a murder, and also you might be god, but probably not? 10/10 would have an existential breakdown again.",
-    date: "February 2026",
-    tags: ["RPG", "philosophy", "chaos"],
-  },
-  {
-    id: "r3",
-    reviewer: "ThunderbirdKlaus",
-    title: "Strange Occurrence: The Library That Wasn't",
-    category: "Strange Occurrence",
-    rating: 5,
-    content: "I found a library between two buildings that definitely weren't there last Thursday. The books were all second editions of things that were never published. I took one. The shelf refilled itself before I reached the door.",
-    date: "March 2026",
-    tags: ["liminal", "books", "suspicious"],
-  },
-  {
-    id: "r4",
-    reviewer: "Cressida_Holloway",
-    title: "The Sandman (Netflix)",
-    category: "Series",
-    rating: 4,
-    content: "Dreams and stories and stories-about-dreams, rendered in the visual language of someone who has personally visited the Dreaming and taken very good notes. More surreal than expected. Less perfect than hoped.",
-    date: "January 2026",
-    tags: ["fantasy", "mythology", "adaptation"],
-  },
-];
-
-export const spotlights = [
-  {
-    id: "s1",
-    name: "Sylvie Crane",
-    descriptor: "Fractal painter & reluctant mystic",
-    quote: "I paint what I see when I close my eyes. The hard part is explaining that it's not abstract — it's extremely literal.",
-    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&q=80",
-    month: "March 2026",
-    tags: ["Visual Art", "Fractals", "Mysticism"],
-  },
-  {
-    id: "s2",
-    name: "Aldric Thorn",
-    descriptor: "Composer of music for places that don't exist",
-    quote: "Every piece I write has a specific address. None of them are on any map. That's the point.",
-    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&q=80",
-    month: "February 2026",
-    tags: ["Music", "Ambient", "Geography"],
-  },
-];
-
-export const categories = ["Fiction", "Tech", "Art", "Theories"] as const;
-export const eras = [
-  "The Year of the Fractured Sky",
-  "The Year of the Dragon",
-  "The Year of the Gilded Comet",
-  "The Age of the Silver Moth",
-  "The Season of Impossible Things",
-  "The First Fracture",
-  "The Genesis of Nonsense",
-] as const;
+export const navItems: { id: PageId; label: string }[] = [
+  { id: 'home', label: 'Home' },
+  { id: 'volumes', label: 'Volumes' },
+  { id: 'editors', label: 'Meet the Editors' },
+  { id: 'about', label: 'About' },
+  { id: 'submissions', label: 'Submissions' },
+]

@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(python3 -c ' *)",
+      "Bash(node -e \"require\\('fs'\\).writeFileSync\\('c:/Users/chest/Projects/LandingPage/NonsenseRealm/src/pages/HomePage.tsx', require\\('fs'\\).readFileSync\\('c:/Users/chest/Projects/LandingPage/NonsenseRealm/src/pages/HomePage.tsx', 'utf8'\\).split\\(''\\).slice\\(0,5\\).join\\(''\\)\\)\")"
     ]
   }
 }
