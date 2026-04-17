@@ -121,11 +121,12 @@ export const volumes = [
 ]
 
 // ── Nav pages ────────────────────────────────────────────────────────────────
-export type PageId = 'home' | 'volumes' | 'editors' | 'about' | 'submissions' | 'copyright'
+export type PageId = 'home' | 'volumes' | 'spotlight' | 'editors' | 'about' | 'submissions' | 'copyright'
 
 export const navItems: { id: PageId; label: string }[] = [
   { id: 'home', label: 'Home' },
   { id: 'volumes', label: 'Volumes' },
+  { id: 'spotlight', label: 'Reviews & Spotlight' },
   { id: 'editors', label: 'Meet the Editors' },
   { id: 'about', label: 'About' },
   { id: 'submissions', label: 'Submissions' },

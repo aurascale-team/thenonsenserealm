@@ -8,17 +8,18 @@ interface SubmissionsPageProps {
 
 export function SubmissionsPage({ isDark }: SubmissionsPageProps) {
   const textColor = isDark ? '#fff8f0' : '#2a0e00'
-  const mutedColor = isDark ? 'rgba(255,248,240,0.62)' : 'rgba(42,14,0,0.65)'
+  const mutedColor = isDark ? 'rgba(255,248,240,0.82)' : 'rgba(42,14,0,0.75)'
   const cardBg = isDark ? 'rgba(30,14,2,0.7)' : 'rgba(255,255,255,0.88)'
   const cardBorder = isDark ? 'rgba(193,68,14,0.25)' : 'rgba(193,68,14,0.15)'
+  const tealText = isDark ? '#00a896' : '#007a6e'
 
   return (
-    <div className="min-h-screen pt-24 pb-20">
+    <main className="min-h-screen pt-24 pb-20">
       <div className="max-w-4xl mx-auto px-6">
 
         {/* Header */}
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-14">
-          <span className="font-heading text-xs tracking-widest uppercase" style={{ color: '#00a896' }}>
+        <motion.header initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-14">
+          <span className="font-heading text-xs tracking-widest uppercase" style={{ color: tealText }}>
             Open All Year Round
           </span>
           <h1
@@ -30,8 +31,8 @@ export function SubmissionsPage({ isDark }: SubmissionsPageProps) {
           <p style={{ color: mutedColor, fontFamily: "'Lora', serif", fontStyle: 'italic', maxWidth: '36rem' }}>
             We welcome writers of all experience levels. No barriers, no prejudice — just good, weird fiction.
           </p>
-          <div className="mt-4 h-px w-32" style={{ background: 'linear-gradient(to right, #00a896, transparent)' }} />
-        </motion.div>
+          <div className="mt-4 h-px w-32" style={{ background: `linear-gradient(to right, ${tealText}, transparent)` }} />
+        </motion.header>
 
         {/* Guidelines */}
         <motion.section
@@ -39,6 +40,7 @@ export function SubmissionsPage({ isDark }: SubmissionsPageProps) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="mb-10 rounded-2xl overflow-hidden"
+          aria-label="Submission guidelines"
           style={{ background: cardBg, border: `1px solid ${cardBorder}` }}
         >
           <div
@@ -59,7 +61,7 @@ export function SubmissionsPage({ isDark }: SubmissionsPageProps) {
                 transition={{ delay: i * 0.05 }}
                 className="flex items-start gap-3"
               >
-                <CheckCircle size={16} className="flex-shrink-0 mt-0.5" style={{ color: '#00a896' }} />
+                <CheckCircle size={16} className="flex-shrink-0 mt-0.5" aria-hidden="true" style={{ color: tealText }} />
                 <span style={{ fontFamily: "'Lora', serif", lineHeight: 1.75, color: mutedColor, fontSize: '0.95rem' }}>
                   {g}
                 </span>
@@ -74,6 +76,7 @@ export function SubmissionsPage({ isDark }: SubmissionsPageProps) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="mb-10"
+          aria-label="Example genres we accept"
         >
           <h2 className="font-heading font-bold text-xl mb-5" style={{ color: textColor }}>
             Example Genres
@@ -85,7 +88,7 @@ export function SubmissionsPage({ isDark }: SubmissionsPageProps) {
                 className="font-heading text-xs tracking-wider uppercase px-4 py-2 rounded-full"
                 style={{
                   background: isDark ? 'rgba(0,168,150,0.1)' : 'rgba(0,168,150,0.07)',
-                  color: '#00a896',
+                  color: tealText,
                   border: '1px solid rgba(0,168,150,0.28)',
                 }}
               >
@@ -107,6 +110,7 @@ export function SubmissionsPage({ isDark }: SubmissionsPageProps) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="rounded-2xl p-8 text-center"
+          aria-label="Submit your work"
           style={{
             background: isDark
               ? 'linear-gradient(135deg, rgba(193,68,14,0.18) 0%, rgba(0,168,150,0.1) 100%)'
@@ -126,28 +130,29 @@ export function SubmissionsPage({ isDark }: SubmissionsPageProps) {
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <a
               href={`mailto:${submissionsContent.email}`}
-              className="inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full font-heading text-sm tracking-wider uppercase font-bold transition-all hover:opacity-85"
+              className="inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full font-heading text-sm tracking-wider uppercase font-bold transition-all hover:opacity-85 min-h-[44px]"
               style={{
                 background: '#c1440e',
                 color: '#fff8f0',
                 boxShadow: '0 0 24px rgba(193,68,14,0.35)',
               }}
             >
-              <Mail size={15} />
+              <Mail size={15} aria-hidden="true" />
               Email Us
             </a>
             <a
               href="https://www.instagram.com/thenonsenserealm"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full font-heading text-sm tracking-wider uppercase transition-all hover:opacity-80"
+              className="inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full font-heading text-sm tracking-wider uppercase transition-all hover:opacity-80 min-h-[44px]"
+              aria-label="The Nonsense Realm on Instagram (opens in new tab)"
               style={{
                 background: 'transparent',
                 color: isDark ? '#fff8f0' : '#2a0e00',
                 border: `1px solid ${isDark ? 'rgba(255,248,240,0.3)' : 'rgba(42,14,0,0.25)'}`,
               }}
             >
-              <Instagram size={15} />
+              <Instagram size={15} aria-hidden="true" />
               {submissionsContent.instagram}
             </a>
           </div>
@@ -157,6 +162,6 @@ export function SubmissionsPage({ isDark }: SubmissionsPageProps) {
         </motion.section>
 
       </div>
-    </div>
+    </main>
   )
 }

@@ -3,18 +3,31 @@
 @import "tailwindcss";
 
 @theme {
+  /* Brand */
   --color-teal: #00a896;
   --color-teal-light: #00c9b1;
   --color-teal-dark: #007a6e;
-  --color-indigo: #c1440e;
-  --color-indigo-light: #e05a1a;
-  --color-indigo-dark: #8a2f07;
+  --color-ember: #c1440e;
+  --color-ember-light: #e05a1a;
+  --color-ember-dark: #8a2f07;
   --color-gold: #FFD700;
-  --color-gold-dark: #d4a800;
-  --color-void: #1a0a00;
+  --color-gold-dark: #c8a400;
+
+  /* Dark surface */
+  --color-void: #1a0900;
   --color-void-surface: #2a1500;
   --color-void-border: #4a2a10;
-  --color-realm-white: #fff8f0;
+
+  /* Light surface */
+  --color-parchment: #fff8f0;
+  --color-parchment-surface: #fdf0e0;
+  --color-parchment-border: #e8d0b8;
+
+  /* Readable text — passes WCAG AA at all sizes */
+  --color-text-dark: #fff8f0;          /* on dark bg */
+  --color-text-dark-muted: rgba(255,248,240,0.82); /* 9.5:1 on #1a0900 */
+  --color-text-light: #2a0e00;         /* on light bg */
+  --color-text-light-muted: rgba(42,14,0,0.75);    /* 7.2:1 on #fff8f0 */
 
   --font-display: 'Cinzel Decorative', serif;
   --font-heading: 'Cinzel', serif;
@@ -29,21 +42,28 @@ body {
   margin: 0;
   font-family: var(--font-body);
   background: var(--color-void);
-  color: var(--color-realm-white);
+  color: var(--color-text-dark);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 :root {
   color-scheme: dark;
 }
 
-.light {
-  color-scheme: light;
-  --bg: var(--color-realm-white);
-  --fg: #2a0e00;
+/* ── Focus indicators — never remove, always replace ──────────────────────── */
+:focus-visible {
+  outline: 2px solid #00a896;
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
-/* Scrollbar */
+/* Remove default only when :focus-visible is supported */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ── Scrollbar ────────────────────────────────────────────────────────────── */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -55,73 +75,28 @@ body {
   border-radius: 3px;
 }
 
-/* Glow utilities */
+/* Light mode scrollbar */
+.light ::-webkit-scrollbar-track {
+  background: var(--color-parchment);
+}
+.light ::-webkit-scrollbar-thumb {
+  background: #c1440e;
+}
+
+/* ── Glow utilities ───────────────────────────────────────────────────────── */
 .glow-teal {
-  box-shadow: 0 0 20px rgba(0, 168, 150, 0.4), 0 0 60px rgba(0, 168, 150, 0.15);
+  box-shadow: 0 0 20px rgba(0,168,150,0.4), 0 0 60px rgba(0,168,150,0.15);
 }
 .glow-gold {
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.5), 0 0 60px rgba(255, 215, 0, 0.2);
+  box-shadow: 0 0 20px rgba(255,215,0,0.5), 0 0 60px rgba(255,215,0,0.2);
 }
-.glow-indigo {
-  box-shadow: 0 0 20px rgba(193, 68, 14, 0.6), 0 0 60px rgba(193, 68, 14, 0.25);
-}
-
-.text-glow-teal {
-  text-shadow: 0 0 20px rgba(0, 168, 150, 0.8), 0 0 40px rgba(0, 168, 150, 0.4);
-}
-.text-glow-gold {
-  text-shadow: 0 0 15px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.4);
+.glow-ember {
+  box-shadow: 0 0 20px rgba(193,68,14,0.6), 0 0 60px rgba(193,68,14,0.25);
 }
 
-/* Ticker animation */
-@keyframes ticker {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-.animate-ticker {
-  animation: ticker 40s linear infinite;
-}
-
-/* Orbital ring animation */
-@keyframes orbit {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes orbit-reverse {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(-360deg); }
-}
-
-.animate-orbit {
-  animation: orbit 12s linear infinite;
-}
-
-.animate-orbit-reverse {
-  animation: orbit-reverse 18s linear infinite;
-}
-
-/* Stars background */
-@keyframes twinkle {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 1; }
-}
-
-/* Reading progress */
-.progress-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #c1440e, #FFD700, #00a896);
-  z-index: 100;
-  transition: width 0.1s ease;
-}
-
-/* Marquee */
+/* ── Marquee ──────────────────────────────────────────────────────────────── */
 @keyframes marquee {
-  0% { transform: translateX(0); }
+  0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
 
@@ -135,11 +110,45 @@ body {
   animation-play-state: paused;
 }
 
-/* Card hover glow */
+/* ── Orbital ring animations ──────────────────────────────────────────────── */
+@keyframes orbit {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes orbit-reverse {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
+}
+
+.animate-orbit         { animation: orbit 12s linear infinite; }
+.animate-orbit-reverse { animation: orbit-reverse 18s linear infinite; }
+
+/* ── Card hover ───────────────────────────────────────────────────────────── */
 .card-hover {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.25s cubic-bezier(0.22,1,0.36,1), box-shadow 0.25s ease;
 }
 .card-hover:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 40px rgba(0, 168, 150, 0.3), 0 0 1px rgba(0, 168, 150, 0.8);
+  box-shadow: 0 8px 40px rgba(0,168,150,0.25), 0 0 1px rgba(0,168,150,0.6);
+}
+
+/* ── Reduced motion ───────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .marquee-inner {
+    animation: none;
+  }
+
+  .animate-orbit,
+  .animate-orbit-reverse {
+    animation: none;
+  }
 }

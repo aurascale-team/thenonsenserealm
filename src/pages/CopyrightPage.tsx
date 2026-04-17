@@ -7,16 +7,17 @@ interface CopyrightPageProps {
 
 export function CopyrightPage({ isDark }: CopyrightPageProps) {
   const textColor = isDark ? '#fff8f0' : '#2a0e00'
-  const mutedColor = isDark ? 'rgba(255,248,240,0.62)' : 'rgba(42,14,0,0.65)'
+  const mutedColor = isDark ? 'rgba(255,248,240,0.82)' : 'rgba(42,14,0,0.75)'
   const cardBg = isDark ? 'rgba(30,14,2,0.7)' : 'rgba(255,255,255,0.88)'
   const cardBorder = isDark ? 'rgba(193,68,14,0.22)' : 'rgba(193,68,14,0.14)'
+  const accentGold = isDark ? '#FFD700' : '#9a6800'
 
   return (
-    <div className="min-h-screen pt-24 pb-20">
+    <main className="min-h-screen pt-24 pb-20">
       <div className="max-w-3xl mx-auto px-6">
 
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-14">
-          <span className="font-heading text-xs tracking-widest uppercase" style={{ color: '#FFD700' }}>
+        <motion.header initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-14">
+          <span className="font-heading text-xs tracking-widest uppercase" style={{ color: accentGold }}>
             Rights &amp; Ownership
           </span>
           <h1
@@ -25,8 +26,8 @@ export function CopyrightPage({ isDark }: CopyrightPageProps) {
           >
             Copyright
           </h1>
-          <div className="mt-4 h-px w-32" style={{ background: 'linear-gradient(to right, #FFD700, transparent)' }} />
-        </motion.div>
+          <div className="mt-4 h-px w-32" style={{ background: `linear-gradient(to right, ${accentGold}, transparent)` }} />
+        </motion.header>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -48,30 +49,32 @@ export function CopyrightPage({ isDark }: CopyrightPageProps) {
         </motion.div>
 
         {/* Platforms */}
-        <motion.div
+        <motion.section
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
+          aria-label="Our platforms"
         >
           <span className="font-heading text-xs tracking-widest uppercase" style={{ color: mutedColor }}>
             Our Platforms
           </span>
-          <div className="mt-3 flex flex-wrap gap-3">
+          <div className="mt-3 flex flex-wrap gap-3" role="list" aria-label="Platforms">
             {copyrightContent.platforms.map((p) => (
               <span
                 key={p}
+                role="listitem"
                 className="font-heading text-xs tracking-wider uppercase px-4 py-2 rounded-full"
                 style={{
-                  background: isDark ? 'rgba(255,215,0,0.08)' : 'rgba(255,215,0,0.1)',
-                  color: '#c8a400',
-                  border: '1px solid rgba(255,215,0,0.25)',
+                  background: isDark ? 'rgba(255,215,0,0.08)' : 'rgba(154,104,0,0.1)',
+                  color: isDark ? '#e8c44a' : '#7a5200',
+                  border: `1px solid ${isDark ? 'rgba(255,215,0,0.25)' : 'rgba(154,104,0,0.3)'}`,
                 }}
               >
                 {p}
               </span>
             ))}
           </div>
-        </motion.div>
+        </motion.section>
 
         <p
           className="mt-12 text-xs"
@@ -81,6 +84,6 @@ export function CopyrightPage({ isDark }: CopyrightPageProps) {
         </p>
 
       </div>
-    </div>
+    </main>
   )
 }

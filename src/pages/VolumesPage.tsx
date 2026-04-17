@@ -7,18 +7,19 @@ interface VolumesPageProps {
 
 export function VolumesPage({ isDark }: VolumesPageProps) {
   const textColor = isDark ? '#fff8f0' : '#2a0e00'
-  const mutedColor = isDark ? 'rgba(255,248,240,0.55)' : 'rgba(42,14,0,0.6)'
+  const mutedColor = isDark ? 'rgba(255,248,240,0.82)' : 'rgba(42,14,0,0.75)'
   const cardBg = isDark ? 'rgba(30,14,2,0.7)' : 'rgba(255,255,255,0.85)'
   const cardBorder = isDark ? 'rgba(193,68,14,0.25)' : 'rgba(193,68,14,0.15)'
+  const tealText = isDark ? '#00a896' : '#007a6e'
 
   return (
-    <div className="min-h-screen pt-24 max-w-7xl mx-auto px-6 pb-20">
-      <motion.div
+    <main className="min-h-screen pt-24 max-w-7xl mx-auto px-6 pb-20">
+      <motion.header
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="mb-14"
       >
-        <span className="font-heading text-xs tracking-widest uppercase" style={{ color: '#00a896' }}>
+        <span className="font-heading text-xs tracking-widest uppercase" style={{ color: tealText }}>
           The Collection
         </span>
         <h1
@@ -30,16 +31,17 @@ export function VolumesPage({ isDark }: VolumesPageProps) {
         <p style={{ color: mutedColor, fontFamily: "'Lora', serif", fontStyle: 'italic', maxWidth: '38rem' }}>
           Three volumes a year, chock-a-block with flash fiction, short stories, and poetry.
         </p>
-        <div className="mt-4 h-px w-32" style={{ background: 'linear-gradient(to right, #00a896, transparent)' }} />
-      </motion.div>
+        <div className="mt-4 h-px w-32" style={{ background: `linear-gradient(to right, ${tealText}, transparent)` }} />
+      </motion.header>
 
       {volumes.map((vol, i) => (
-        <motion.div
+        <motion.article
           key={vol.number}
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: i * 0.1 }}
           className="mb-10 rounded-2xl overflow-hidden"
+          aria-label={`Volume ${vol.number}: ${vol.title}`}
           style={{ background: cardBg, border: `1px solid ${cardBorder}` }}
         >
           {/* Volume header */}
@@ -72,9 +74,9 @@ export function VolumesPage({ isDark }: VolumesPageProps) {
                 <span
                   className="font-heading text-xs tracking-widest uppercase px-3 py-1 rounded-full"
                   style={{
-                    background: vol.status === 'upcoming' ? 'rgba(255,215,0,0.12)' : 'rgba(0,168,150,0.12)',
-                    color: vol.status === 'upcoming' ? '#FFD700' : '#00a896',
-                    border: `1px solid ${vol.status === 'upcoming' ? 'rgba(255,215,0,0.3)' : 'rgba(0,168,150,0.3)'}`,
+                    background: vol.status === 'upcoming' ? (isDark ? 'rgba(255,215,0,0.12)' : 'rgba(154,104,0,0.1)') : 'rgba(0,168,150,0.12)',
+                    color: vol.status === 'upcoming' ? (isDark ? '#FFD700' : '#9a6800') : tealText,
+                    border: `1px solid ${vol.status === 'upcoming' ? (isDark ? 'rgba(255,215,0,0.3)' : 'rgba(154,104,0,0.3)') : 'rgba(0,168,150,0.3)'}`,
                   }}
                 >
                   {vol.status === 'upcoming' ? 'Coming Soon' : 'Published'}
@@ -106,7 +108,7 @@ export function VolumesPage({ isDark }: VolumesPageProps) {
                     </div>
                     <span
                       className="font-heading text-xs tracking-wider uppercase px-2 py-0.5 rounded-full flex-shrink-0"
-                      style={{ background: 'rgba(0,168,150,0.1)', color: '#00a896', border: '1px solid rgba(0,168,150,0.25)' }}
+                      style={{ background: 'rgba(0,168,150,0.1)', color: tealText, border: '1px solid rgba(0,168,150,0.25)' }}
                     >
                       {story.genre}
                     </span>
@@ -124,7 +126,8 @@ export function VolumesPage({ isDark }: VolumesPageProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="underline transition-opacity hover:opacity-70"
-                  style={{ color: '#00a896' }}
+                  aria-label="@thenonsenserealm on Instagram (opens in new tab)"
+                  style={{ color: tealText }}
                 >
                   @thenonsenserealm
                 </a>{' '}
@@ -132,7 +135,7 @@ export function VolumesPage({ isDark }: VolumesPageProps) {
               </p>
             )}
           </div>
-        </motion.div>
+        </motion.article>
       ))}
 
       {/* Submissions nudge */}
@@ -151,12 +154,12 @@ export function VolumesPage({ isDark }: VolumesPageProps) {
           <a
             href="mailto:thenonsenserealmmagazine@gmail.com"
             className="underline transition-opacity hover:opacity-70"
-            style={{ color: '#00a896' }}
+            style={{ color: tealText }}
           >
             Send us your work.
           </a>
         </p>
       </motion.div>
-    </div>
+    </main>
   )
 }

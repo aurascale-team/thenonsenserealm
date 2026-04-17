@@ -7,18 +7,20 @@ interface EditorsPageProps {
 
 export function EditorsPage({ isDark }: EditorsPageProps) {
   const textColor = isDark ? '#fff8f0' : '#2a0e00'
-  const mutedColor = isDark ? 'rgba(255,248,240,0.6)' : 'rgba(42,14,0,0.65)'
-  const cardBg = isDark ? 'rgba(30,14,2,0.7)' : 'rgba(255,255,255,0.88)'
-  const cardBorder = isDark ? 'rgba(193,68,14,0.25)' : 'rgba(193,68,14,0.15)'
+  const mutedColor = isDark ? 'rgba(255,248,240,0.82)' : 'rgba(42,14,0,0.75)'
+  const cardBg = isDark ? 'rgba(30,14,2,0.75)' : 'rgba(255,255,255,0.92)'
+  const cardBorder = isDark ? 'rgba(193,68,14,0.28)' : 'rgba(193,68,14,0.18)'
+  // Gold only on dark; on light use a readable amber
+  const accentGold = isDark ? '#FFD700' : '#9a6800'
 
   return (
-    <div className="min-h-screen pt-24 max-w-7xl mx-auto px-6 pb-20">
-      <motion.div
+    <main className="min-h-screen pt-24 max-w-7xl mx-auto px-6 pb-20">
+      <motion.header
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="mb-14"
       >
-        <span className="font-heading text-xs tracking-widest uppercase" style={{ color: '#FFD700' }}>
+        <span className="font-heading text-xs tracking-widest uppercase" style={{ color: accentGold }}>
           Behind the Realm
         </span>
         <h1
@@ -30,12 +32,12 @@ export function EditorsPage({ isDark }: EditorsPageProps) {
         <p style={{ color: mutedColor, fontFamily: "'Lora', serif", fontStyle: 'italic', maxWidth: '38rem' }}>
           Four editors with a burning love for sci-fi and fantasy — and frankly, a fair amount of spite.
         </p>
-        <div className="mt-4 h-px w-32" style={{ background: 'linear-gradient(to right, #FFD700, transparent)' }} />
-      </motion.div>
+        <div className="mt-4 h-px w-32" style={{ background: `linear-gradient(to right, ${accentGold}, transparent)` }} />
+      </motion.header>
 
       <div className="space-y-10">
         {editors.map((editor, i) => (
-          <motion.div
+          <motion.article
             key={editor.name}
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
@@ -45,18 +47,16 @@ export function EditorsPage({ isDark }: EditorsPageProps) {
           >
             {/* Portrait header */}
             <div className="flex flex-col sm:flex-row">
-              <div
-                className="flex-shrink-0"
-                style={{ width: 'clamp(140px, 22%, 200px)' }}
-              >
+              <div className="flex-shrink-0" style={{ width: 'clamp(140px, 22%, 200px)' }}>
                 <img
                   src={editor.image}
-                  alt={editor.name}
-                  className="w-full h-full object-cover object-top"
+                  alt={`${editor.name}, editor at The Nonsense Realm`}
+                  loading="lazy"
+                  className="w-full object-cover object-top"
                   style={{
                     aspectRatio: '3/4',
                     display: 'block',
-                    filter: isDark ? 'brightness(0.9) saturate(1.1)' : 'brightness(0.95)',
+                    filter: isDark ? 'brightness(0.88) saturate(1.1)' : 'brightness(0.95)',
                   }}
                 />
               </div>
@@ -72,15 +72,16 @@ export function EditorsPage({ isDark }: EditorsPageProps) {
                 <h2 className="font-heading font-bold text-2xl mb-2" style={{ color: textColor }}>
                   {editor.name}
                 </h2>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2" role="list" aria-label={`${editor.name}'s interests`}>
                   {editor.interests.slice(0, 3).map((tag) => (
                     <span
                       key={tag}
-                      className="font-heading text-xs tracking-wider uppercase px-2 py-0.5 rounded-full"
+                      role="listitem"
+                      className="font-heading text-xs tracking-wider uppercase px-2 py-1 rounded-full"
                       style={{
-                        background: 'rgba(0,168,150,0.1)',
-                        color: '#00a896',
-                        border: '1px solid rgba(0,168,150,0.25)',
+                        background: isDark ? 'rgba(0,168,150,0.12)' : 'rgba(0,168,150,0.09)',
+                        color: '#007a6e',
+                        border: '1px solid rgba(0,168,150,0.3)',
                       }}
                     >
                       {tag}
@@ -97,12 +98,7 @@ export function EditorsPage({ isDark }: EditorsPageProps) {
                 <p
                   key={pi}
                   className={pi > 0 ? 'mt-4' : ''}
-                  style={{
-                    color: mutedColor,
-                    fontFamily: "'Lora', serif",
-                    lineHeight: 1.85,
-                    fontSize: '0.97rem',
-                  }}
+                  style={{ color: mutedColor, fontFamily: "'Lora', serif", lineHeight: 1.85, fontSize: '0.97rem' }}
                 >
                   {para}
                 </p>
@@ -111,13 +107,10 @@ export function EditorsPage({ isDark }: EditorsPageProps) {
               {/* Recent reads */}
               {'recentReads' in editor && editor.recentReads && (
                 <div className="mt-6 pt-5" style={{ borderTop: `1px solid ${cardBorder}` }}>
-                  <span
-                    className="font-heading text-xs tracking-widest uppercase"
-                    style={{ color: '#FFD700' }}
-                  >
+                  <span className="font-heading text-xs tracking-widest uppercase" style={{ color: accentGold }}>
                     Recent Reads
                   </span>
-                  <ul className="mt-3 space-y-1">
+                  <ul className="mt-3 space-y-1" aria-label={`${editor.name}'s recent reads`}>
                     {(editor.recentReads as string[]).map((r) => (
                       <li
                         key={r}
@@ -131,24 +124,22 @@ export function EditorsPage({ isDark }: EditorsPageProps) {
                 </div>
               )}
 
-              {/* Favourites (if no recentReads) */}
+              {/* Favourites */}
               {!('recentReads' in editor) && editor.favourites && (
                 <div className="mt-6 pt-5" style={{ borderTop: `1px solid ${cardBorder}` }}>
-                  <span
-                    className="font-heading text-xs tracking-widest uppercase"
-                    style={{ color: '#FFD700' }}
-                  >
+                  <span className="font-heading text-xs tracking-widest uppercase" style={{ color: accentGold }}>
                     Favourites
                   </span>
-                  <div className="mt-3 flex flex-wrap gap-2">
+                  <div className="mt-3 flex flex-wrap gap-2" role="list" aria-label={`${editor.name}'s favourite books`}>
                     {editor.favourites.map((f) => (
                       <span
                         key={f}
+                        role="listitem"
                         className="text-xs px-3 py-1 rounded-full"
                         style={{
-                          background: isDark ? 'rgba(255,215,0,0.08)' : 'rgba(255,215,0,0.12)',
-                          color: '#c8a400',
-                          border: '1px solid rgba(255,215,0,0.2)',
+                          background: isDark ? 'rgba(154,104,0,0.15)' : 'rgba(154,104,0,0.1)',
+                          color: isDark ? '#e8c44a' : '#7a5200',
+                          border: `1px solid ${isDark ? 'rgba(255,215,0,0.25)' : 'rgba(154,104,0,0.3)'}`,
                           fontFamily: "'Lora', serif",
                           fontStyle: 'italic',
                         }}
@@ -160,9 +151,9 @@ export function EditorsPage({ isDark }: EditorsPageProps) {
                 </div>
               )}
             </div>
-          </motion.div>
+          </motion.article>
         ))}
       </div>
-    </div>
+    </main>
   )
 }

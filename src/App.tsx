@@ -10,6 +10,7 @@ import { EditorsPage } from './pages/EditorsPage'
 import { AboutPage } from './pages/AboutPage'
 import { SubmissionsPage } from './pages/SubmissionsPage'
 import { CopyrightPage } from './pages/CopyrightPage'
+import { SpotlightPage } from './pages/SpotlightPage'
 import type { PageId } from './data/content'
 
 const pageVariants = {
@@ -72,12 +73,13 @@ export default function App() {
                 exit="exit"
                 transition={{ duration: 0.28, ease: 'easeInOut' }}
               >
-                {page === 'home'        && <HomePage       isDark={isDark} onNavigate={navigate} />}
-                {page === 'volumes'     && <VolumesPage    isDark={isDark} />}
-                {page === 'editors'     && <EditorsPage    isDark={isDark} />}
-                {page === 'about'       && <AboutPage      isDark={isDark} onNavigate={navigate} />}
-                {page === 'submissions' && <SubmissionsPage isDark={isDark} />}
-                {page === 'copyright'   && <CopyrightPage  isDark={isDark} />}
+                {page === 'home'        && <HomePage        isDark={isDark} onNavigate={navigate} />}
+                {page === 'volumes'     && <VolumesPage     isDark={isDark} />}
+                {page === 'spotlight'   && <SpotlightPage   isDark={isDark} />}
+                {page === 'editors'     && <EditorsPage     isDark={isDark} />}
+                {page === 'about'       && <AboutPage       isDark={isDark} onNavigate={navigate} />}
+                {page === 'submissions' && <SubmissionsPage  isDark={isDark} />}
+                {page === 'copyright'   && <CopyrightPage   isDark={isDark} />}
               </motion.div>
             </AnimatePresence>
           </main>

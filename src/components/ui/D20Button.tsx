@@ -1,7 +1,5 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { volumes } from '../../data/content'
-
 interface D20ButtonProps {
   isDark: boolean
 }
@@ -10,11 +8,10 @@ export function D20Button({ isDark: _isDark }: D20ButtonProps) {
   const [tooltip, setTooltip] = useState(false)
 
   const handleRoll = () => {
-    const random = volumes[Math.floor(Math.random() * volumes.length)]
     setTooltip(true)
     setTimeout(() => setTooltip(false), 3000)
-    console.log('Random volume:', random.title)
   }
+
 
   return (
     <div className="fixed bottom-8 right-8 z-40">
@@ -42,16 +39,15 @@ export function D20Button({ isDark: _isDark }: D20ButtonProps) {
         whileHover={{ scale: 1.1, rotate: 15 }}
         whileTap={{ scale: 0.9, rotate: -15 }}
         className="w-14 h-14 flex items-center justify-center rounded-full text-xl font-bold"
+        aria-label="Roll for a random volume"
         style={{
           background: 'linear-gradient(135deg, #7a3a00, #c1440e)',
           boxShadow: '0 0 20px rgba(193, 68, 14, 0.6), 0 4px 16px rgba(0,0,0,0.4)',
           color: '#FFD700',
           border: '2px solid rgba(255, 215, 0, 0.4)',
         }}
-        title="Roll for a random article"
       >
-        {/* d20 SVG */}
-        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
           <polygon
             points="14,2 26,9 26,19 14,26 2,19 2,9"
             stroke="#FFD700"

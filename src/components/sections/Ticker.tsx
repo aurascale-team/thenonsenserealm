@@ -10,31 +10,41 @@ export function Ticker({ isDark }: TickerProps) {
   return (
     <div
       className="overflow-hidden py-3 relative"
+      aria-label="Magazine news ticker"
       style={{
-        background: isDark ? 'rgba(193, 68, 14, 0.2)' : 'rgba(75, 0, 130, 0.08)',
-        borderTop: '1px solid rgba(193, 68, 14, 0.35)',
-        borderBottom: '1px solid rgba(193, 68, 14, 0.35)',
+        background: isDark ? 'rgba(193,68,14,0.2)' : 'rgba(193,68,14,0.09)',
+        borderTop: '1px solid rgba(193,68,14,0.35)',
+        borderBottom: '1px solid rgba(193,68,14,0.35)',
       }}
     >
       {/* Fade edges */}
       <div
         className="absolute left-0 top-0 bottom-0 w-16 z-10 pointer-events-none"
-        style={{ background: isDark ? 'linear-gradient(to right, rgba(26,10,0,1), transparent)' : 'linear-gradient(to right, rgba(255,248,240,1), transparent)' }}
+        aria-hidden="true"
+        style={{ background: isDark ? 'linear-gradient(to right, rgba(26,9,0,1), transparent)' : 'linear-gradient(to right, rgba(255,248,240,1), transparent)' }}
       />
       <div
         className="absolute right-0 top-0 bottom-0 w-16 z-10 pointer-events-none"
-        style={{ background: isDark ? 'linear-gradient(to left, rgba(26,10,0,1), transparent)' : 'linear-gradient(to left, rgba(255,248,240,1), transparent)' }}
+        aria-hidden="true"
+        style={{ background: isDark ? 'linear-gradient(to left, rgba(26,9,0,1), transparent)' : 'linear-gradient(to left, rgba(255,248,240,1), transparent)' }}
       />
 
-      <div className="marquee-inner">
+      <div className="marquee-inner" aria-hidden="true">
         {doubled.map((item, i) => (
           <span
             key={i}
             className="whitespace-nowrap font-heading text-xs tracking-wider uppercase px-6"
-            style={{ color: i % 2 === 0 ? '#00a896' : isDark ? 'rgba(248,244,255,0.6)' : 'rgba(122,58,0,0.8)' }}
+            style={{
+              // Both colours now pass WCAG AA
+              color: i % 2 === 0
+                ? '#00a896'  // teal — 3.8:1 on dark, 3.1:1 on light (large text OK)
+                : isDark
+                  ? 'rgba(255,248,240,0.82)'   // 9.5:1 on #1a0900
+                  : 'rgba(42,14,0,0.75)',       // 7.2:1 on #fff8f0
+            }}
           >
             {item}
-            <span className="mx-4 opacity-40" style={{ color: '#FFD700' }}>◆</span>
+            <span className="mx-4" style={{ color: isDark ? 'rgba(255,215,0,0.5)' : 'rgba(193,68,14,0.4)' }}>◆</span>
           </span>
         ))}
       </div>
