@@ -23,12 +23,12 @@ export function SubmissionsPage({ isDark }: SubmissionsPageProps) {
             Open All Year Round
           </span>
           <h1
-            className="font-heading font-bold mt-2 mb-3"
+            className="font-display font-bold mt-2 mb-3"
             style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', color: textColor }}
           >
             Submissions
           </h1>
-          <p style={{ color: mutedColor, fontFamily: "'Lora', serif", fontStyle: 'italic', maxWidth: '36rem' }}>
+          <p style={{ color: mutedColor, fontFamily: "'Cinzel', serif", fontStyle: 'italic', maxWidth: '36rem' }}>
             We welcome writers of all experience levels. No barriers, no prejudice — just good, weird fiction.
           </p>
           <div className="mt-4 h-px w-32" style={{ background: `linear-gradient(to right, ${tealText}, transparent)` }} />
@@ -62,7 +62,7 @@ export function SubmissionsPage({ isDark }: SubmissionsPageProps) {
                 className="flex items-start gap-3"
               >
                 <CheckCircle size={16} className="flex-shrink-0 mt-0.5" aria-hidden="true" style={{ color: tealText }} />
-                <span style={{ fontFamily: "'Lora', serif", lineHeight: 1.75, color: mutedColor, fontSize: '0.95rem' }}>
+                <span style={{ fontFamily: "'Cinzel', serif", lineHeight: 1.75, color: mutedColor, fontSize: '0.95rem' }}>
                   {g}
                 </span>
               </motion.li>
@@ -78,7 +78,7 @@ export function SubmissionsPage({ isDark }: SubmissionsPageProps) {
           className="mb-10"
           aria-label="Example genres we accept"
         >
-          <h2 className="font-heading font-bold text-xl mb-5" style={{ color: textColor }}>
+          <h2 className="font-display font-bold text-xl mb-5" style={{ color: textColor }}>
             Example Genres
           </h2>
           <div className="flex flex-wrap gap-3">
@@ -98,7 +98,7 @@ export function SubmissionsPage({ isDark }: SubmissionsPageProps) {
           </div>
           <p
             className="mt-5 text-sm"
-            style={{ color: mutedColor, fontFamily: "'Lora', serif", fontStyle: 'italic' }}
+            style={{ color: mutedColor, fontFamily: "'Cinzel', serif", fontStyle: 'italic' }}
           >
             Not seeing your genre? If it lives in the realm of sci-fi or fantasy, we want it. Check our Instagram for volume-specific themes.
           </p>
@@ -118,12 +118,12 @@ export function SubmissionsPage({ isDark }: SubmissionsPageProps) {
             border: `1px solid ${cardBorder}`,
           }}
         >
-          <h2 className="font-heading font-bold text-xl mb-3" style={{ color: textColor }}>
+          <h2 className="font-display font-bold text-xl mb-3" style={{ color: textColor }}>
             Ready to Submit?
           </h2>
           <p
             className="mb-7 max-w-md mx-auto"
-            style={{ color: mutedColor, fontFamily: "'Lora', serif", fontStyle: 'italic' }}
+            style={{ color: mutedColor, fontFamily: "'Cinzel', serif", fontStyle: 'italic' }}
           >
             Attach your submission as a Word or Google Doc and email it to us with a brief summary of your piece.
           </p>
@@ -156,7 +156,7 @@ export function SubmissionsPage({ isDark }: SubmissionsPageProps) {
               {submissionsContent.instagram}
             </a>
           </div>
-          <p className="mt-5 text-xs" style={{ color: mutedColor, fontFamily: "'Lora', serif" }}>
+          <p className="mt-5 text-xs" style={{ color: mutedColor, fontFamily: "'Cinzel', serif" }}>
             {submissionsContent.email}
           </p>
         </motion.section>

@@ -21,7 +21,7 @@ export function CopyrightPage({ isDark }: CopyrightPageProps) {
             Rights &amp; Ownership
           </span>
           <h1
-            className="font-heading font-bold mt-2 mb-3"
+            className="font-display font-bold mt-2 mb-3"
             style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', color: textColor }}
           >
             Copyright
@@ -38,7 +38,7 @@ export function CopyrightPage({ isDark }: CopyrightPageProps) {
         >
           <p
             style={{
-              fontFamily: "'Lora', serif",
+              fontFamily: "'Cinzel', serif",
               lineHeight: 1.95,
               color: mutedColor,
               fontSize: '0.97rem',
@@ -78,7 +78,7 @@ export function CopyrightPage({ isDark }: CopyrightPageProps) {
 
         <p
           className="mt-12 text-xs"
-          style={{ color: isDark ? 'rgba(255,248,240,0.3)' : 'rgba(42,14,0,0.35)', fontFamily: "'Lora', serif" }}
+          style={{ color: isDark ? 'rgba(255,248,240,0.3)' : 'rgba(42,14,0,0.35)', fontFamily: "'Cinzel', serif" }}
         >
           © {copyrightContent.year} The Nonsense Realm Magazine. All writers retain their own copyright.
         </p>

@@ -21,12 +21,12 @@ export function SpotlightPage({ isDark }: SpotlightPageProps) {
             Reviews &amp; Spotlights
           </span>
           <h1
-            className="font-heading font-bold mt-2 mb-3"
+            className="font-display font-bold mt-2 mb-3"
             style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', color: textColor }}
           >
             Underground Reads
           </h1>
-          <p style={{ color: mutedColor, fontFamily: "'Lora', serif", fontStyle: 'italic', maxWidth: '38rem' }}>
+          <p style={{ color: mutedColor, fontFamily: "'Cinzel', serif", fontStyle: 'italic', maxWidth: '38rem' }}>
             Our editors shine a light on the books, authors, and stories they can't stop thinking about.
           </p>
           <div className="mt-4 h-px w-32" style={{ background: `linear-gradient(to right, ${tealText}, transparent)` }} />
@@ -47,12 +47,12 @@ export function SpotlightPage({ isDark }: SpotlightPageProps) {
           >
             🔮
           </div>
-          <h2 className="font-heading font-bold text-xl mb-3" style={{ color: textColor }}>
+          <h2 className="font-display font-bold text-xl mb-3" style={{ color: textColor }}>
             Coming Soon
           </h2>
           <p
             className="mb-8 max-w-md mx-auto"
-            style={{ color: mutedColor, fontFamily: "'Lora', serif", lineHeight: 1.85 }}
+            style={{ color: mutedColor, fontFamily: "'Cinzel', serif", lineHeight: 1.85 }}
           >
             Our editors are busy reading — reviews, author spotlights, and underground picks will be posted here as we publish. Follow us on Instagram for early previews.
           </p>

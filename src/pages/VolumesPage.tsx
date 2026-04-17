@@ -23,12 +23,12 @@ export function VolumesPage({ isDark }: VolumesPageProps) {
           The Collection
         </span>
         <h1
-          className="font-heading font-bold mt-2 mb-3"
+          className="font-display font-bold mt-2 mb-3"
           style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', color: textColor }}
         >
           Volumes
         </h1>
-        <p style={{ color: mutedColor, fontFamily: "'Lora', serif", fontStyle: 'italic', maxWidth: '38rem' }}>
+        <p style={{ color: mutedColor, fontFamily: "'Cinzel', serif", fontStyle: 'italic', maxWidth: '38rem' }}>
           Three volumes a year, chock-a-block with flash fiction, short stories, and poetry.
         </p>
         <div className="mt-4 h-px w-32" style={{ background: `linear-gradient(to right, ${tealText}, transparent)` }} />
@@ -62,12 +62,12 @@ export function VolumesPage({ isDark }: VolumesPageProps) {
             </div>
             <div className="flex-1">
               <div
-                className="font-heading font-bold mb-1"
+                className="font-display font-bold mb-1"
                 style={{ fontSize: 'clamp(1.2rem, 2.5vw, 1.6rem)', color: textColor }}
               >
                 {vol.title}
               </div>
-              <p style={{ color: mutedColor, fontFamily: "'Lora', serif", fontSize: '0.9rem' }}>
+              <p style={{ color: mutedColor, fontFamily: "'Cinzel', serif", fontSize: '0.9rem' }}>
                 {vol.description}
               </p>
               <div className="flex items-center gap-3 mt-3">
@@ -102,7 +102,7 @@ export function VolumesPage({ isDark }: VolumesPageProps) {
                       <span className="font-heading font-bold text-sm" style={{ color: textColor }}>
                         {story.title}
                       </span>
-                      <span className="text-xs ml-3" style={{ color: mutedColor, fontFamily: "'Lora', serif" }}>
+                      <span className="text-xs ml-3" style={{ color: mutedColor, fontFamily: "'Cinzel', serif" }}>
                         by {story.author}
                       </span>
                     </div>
@@ -118,7 +118,7 @@ export function VolumesPage({ isDark }: VolumesPageProps) {
             ) : (
               <p
                 className="py-4"
-                style={{ color: mutedColor, fontFamily: "'Lora', serif", fontStyle: 'italic', fontSize: '0.9rem' }}
+                style={{ color: mutedColor, fontFamily: "'Cinzel', serif", fontStyle: 'italic', fontSize: '0.9rem' }}
               >
                 Stories to be announced — check our Instagram{' '}
                 <a
@@ -149,7 +149,7 @@ export function VolumesPage({ isDark }: VolumesPageProps) {
           border: '1px solid rgba(0,168,150,0.2)',
         }}
       >
-        <p style={{ color: mutedColor, fontFamily: "'Lora', serif", fontStyle: 'italic' }}>
+        <p style={{ color: mutedColor, fontFamily: "'Cinzel', serif", fontStyle: 'italic' }}>
           Want to be in a future volume?{' '}
           <a
             href="mailto:thenonsenserealmmagazine@gmail.com"

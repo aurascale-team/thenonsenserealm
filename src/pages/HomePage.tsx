@@ -65,7 +65,7 @@ export function HomePage({ isDark, onNavigate }: HomePageProps) {
           <p
             className="mt-4 leading-relaxed"
             style={{
-              fontFamily: "'Lora', serif",
+              fontFamily: "'Cinzel', serif",
               fontSize: 'clamp(1.05rem, 2vw, 1.2rem)',
               color: textColor,
               fontStyle: 'italic',
@@ -112,7 +112,7 @@ export function HomePage({ isDark, onNavigate }: HomePageProps) {
               <h2 className="font-heading font-bold mt-2 mb-3" style={{ fontSize: '1.4rem', color: textColor }}>
                 {s.heading}
               </h2>
-              <p className="text-sm leading-relaxed mb-5" style={{ color: mutedColor, fontFamily: "'Lora', serif" }}>
+              <p className="text-sm leading-relaxed mb-5" style={{ color: mutedColor, fontFamily: "'Cinzel', serif" }}>
                 {s.body}
               </p>
               <span
@@ -168,12 +168,12 @@ export function HomePage({ isDark, onNavigate }: HomePageProps) {
           viewport={{ once: true }}
         >
           <h2
-            className="font-heading font-bold mb-4"
+            className="font-display font-bold mb-4"
             style={{ fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', color: textColor }}
           >
             Ready to Submit?
           </h2>
-          <p className="mb-8 leading-relaxed" style={{ color: mutedColor, fontFamily: "'Lora', serif" }}>
+          <p className="mb-8 leading-relaxed" style={{ color: mutedColor, fontFamily: "'Cinzel', serif" }}>
             Submissions open all year round. Flash fiction, short stories, and poetry — weird, experimental, and everything in between.
           </p>
           <div className="flex flex-wrap justify-center gap-4">

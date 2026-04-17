@@ -76,7 +76,7 @@ export function Hero({ isDark, onNavigate }: HeroProps) {
           </p>
 
           <h1
-            className="font-heading font-bold leading-tight mb-6"
+            className="font-display font-bold leading-tight mb-6"
             style={{
               fontSize: 'clamp(2rem, 5vw, 3.2rem)',
               color: isDark ? '#fff8f0' : '#2a0e00',
@@ -89,7 +89,7 @@ export function Hero({ isDark, onNavigate }: HeroProps) {
           <p
             className="mb-9 leading-relaxed"
             style={{
-              fontFamily: "'Lora', serif",
+              fontFamily: "'Cinzel', serif",
               fontStyle: 'italic',
               fontSize: '1.05rem',
               color: textMuted,
@@ -203,7 +203,7 @@ export function Hero({ isDark, onNavigate }: HeroProps) {
               <h2 className="font-heading font-bold text-base mb-1.5" style={{ color: isDark ? '#fff8f0' : '#2a0e00' }}>
                 Browse the Volumes
               </h2>
-              <p className="text-xs leading-relaxed mb-4" style={{ color: isDark ? 'rgba(255,248,240,0.72)' : 'rgba(42,14,0,0.65)', fontFamily: "'Lora', serif" }}>
+              <p className="text-xs leading-relaxed mb-4" style={{ color: isDark ? 'rgba(255,248,240,0.72)' : 'rgba(42,14,0,0.65)', fontFamily: "'Cinzel', serif" }}>
                 Flash fiction, short stories, and poetry from the weird and wonderful — three issues a year.
               </p>
               <span
@@ -254,7 +254,7 @@ export function Hero({ isDark, onNavigate }: HeroProps) {
               <h2 className="font-heading font-bold text-base mb-1.5" style={{ color: isDark ? '#fff8f0' : '#2a0e00' }}>
                 Reviews &amp; Spotlights
               </h2>
-              <p className="text-xs leading-relaxed mb-4" style={{ color: isDark ? 'rgba(255,248,240,0.72)' : 'rgba(42,14,0,0.65)', fontFamily: "'Lora', serif" }}>
+              <p className="text-xs leading-relaxed mb-4" style={{ color: isDark ? 'rgba(255,248,240,0.72)' : 'rgba(42,14,0,0.65)', fontFamily: "'Cinzel', serif" }}>
                 Our editors spotlight underground reads, post reviews, and champion the books they can't put down.
               </p>
               <span

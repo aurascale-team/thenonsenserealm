@@ -22,7 +22,7 @@ export function AboutPage({ isDark, onNavigate }: AboutPageProps) {
             The Nonsense Realm
           </span>
           <h1
-            className="font-heading font-bold mt-2 mb-3"
+            className="font-display font-bold mt-2 mb-3"
             style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', color: textColor }}
           >
             About the Magazine
@@ -39,7 +39,7 @@ export function AboutPage({ isDark, onNavigate }: AboutPageProps) {
           aria-label="Our origin"
           style={{ background: sectionBg, border: `1px solid ${sectionBorder}` }}
         >
-          <p style={{ fontFamily: "'Lora', serif", fontSize: '1.05rem', lineHeight: 1.9, color: mutedColor }}>
+          <p style={{ fontFamily: "'Cinzel', serif", fontSize: '1.05rem', lineHeight: 1.9, color: mutedColor }}>
             {aboutContent.origin}
           </p>
         </motion.section>
@@ -52,10 +52,10 @@ export function AboutPage({ isDark, onNavigate }: AboutPageProps) {
           className="mb-10"
           aria-label="What we're looking for"
         >
-          <h2 className="font-heading font-bold text-xl mb-4" style={{ color: textColor }}>
+          <h2 className="font-display font-bold text-xl mb-4" style={{ color: textColor }}>
             What We're Looking For
           </h2>
-          <p className="mb-6" style={{ fontFamily: "'Lora', serif", lineHeight: 1.85, color: mutedColor }}>
+          <p className="mb-6" style={{ fontFamily: "'Cinzel', serif", lineHeight: 1.85, color: mutedColor }}>
             {aboutContent.whatWeLookFor}
           </p>
           <div className="flex flex-wrap gap-2" role="list" aria-label="Genres">
@@ -85,12 +85,12 @@ export function AboutPage({ isDark, onNavigate }: AboutPageProps) {
           aria-label="Authors we're inspired by"
           style={{ background: sectionBg, border: `1px solid ${sectionBorder}` }}
         >
-          <h2 className="font-heading font-bold text-xl mb-4" style={{ color: textColor }}>
+          <h2 className="font-display font-bold text-xl mb-4" style={{ color: textColor }}>
             Authors We're Inspired By
           </h2>
           <div className="flex flex-wrap gap-x-3 gap-y-2">
             {aboutContent.inspiredBy.map((a) => (
-              <span key={a} style={{ fontFamily: "'Lora', serif", fontStyle: 'italic', color: mutedColor, fontSize: '0.95rem' }}>
+              <span key={a} style={{ fontFamily: "'Cinzel', serif", fontStyle: 'italic', color: mutedColor, fontSize: '0.95rem' }}>
                 {a}<span aria-hidden="true" style={{ color: isDark ? 'rgba(255,248,240,0.25)' : 'rgba(42,14,0,0.25)' }}>  ·  </span>
               </span>
             ))}
@@ -105,10 +105,10 @@ export function AboutPage({ isDark, onNavigate }: AboutPageProps) {
           className="mb-10"
           aria-label="Who we're looking for"
         >
-          <h2 className="font-heading font-bold text-xl mb-4" style={{ color: textColor }}>
+          <h2 className="font-display font-bold text-xl mb-4" style={{ color: textColor }}>
             Who We're Looking For
           </h2>
-          <p style={{ fontFamily: "'Lora', serif", lineHeight: 1.85, color: mutedColor }}>
+          <p style={{ fontFamily: "'Cinzel', serif", lineHeight: 1.85, color: mutedColor }}>
             {aboutContent.whoWeLookFor}
           </p>
         </motion.section>
@@ -122,10 +122,10 @@ export function AboutPage({ isDark, onNavigate }: AboutPageProps) {
           aria-label="The sense of the nonsense"
           style={{ background: sectionBg, border: `1px solid ${sectionBorder}` }}
         >
-          <h2 className="font-heading font-bold text-xl mb-4" style={{ color: textColor }}>
+          <h2 className="font-display font-bold text-xl mb-4" style={{ color: textColor }}>
             The Sense of The Nonsense
           </h2>
-          <p style={{ fontFamily: "'Lora', serif", lineHeight: 1.85, color: mutedColor }}>
+          <p style={{ fontFamily: "'Cinzel', serif", lineHeight: 1.85, color: mutedColor }}>
             {aboutContent.theSense}
           </p>
         </motion.section>
@@ -138,7 +138,7 @@ export function AboutPage({ isDark, onNavigate }: AboutPageProps) {
           className="mb-10"
           aria-label="Find us"
         >
-          <h2 className="font-heading font-bold text-xl mb-6" style={{ color: textColor }}>
+          <h2 className="font-display font-bold text-xl mb-6" style={{ color: textColor }}>
             Find Us
           </h2>
           <div className="flex flex-col sm:flex-row gap-4">
