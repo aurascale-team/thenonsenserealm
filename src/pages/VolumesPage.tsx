@@ -1,11 +1,16 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { BookOpen } from 'lucide-react'
 import { volumes } from '../data/content'
+import { VolumeModal } from '../components/ui/VolumeModal'
 
 interface VolumesPageProps {
   isDark: boolean
 }
 
 export function VolumesPage({ isDark }: VolumesPageProps) {
+  const [previewOpen, setPreviewOpen] = useState(false)
+
   const textColor = isDark ? '#fff8f0' : '#2a0e00'
   const mutedColor = isDark ? 'rgba(255,248,240,0.82)' : 'rgba(42,14,0,0.75)'
   const cardBg = isDark ? 'rgba(30,14,2,0.7)' : 'rgba(255,255,255,0.85)'
@@ -116,27 +121,44 @@ export function VolumesPage({ isDark }: VolumesPageProps) {
                 ))}
               </div>
             ) : (
-              <p
-                className="py-4"
-                style={{ color: mutedColor, fontFamily: "'Cinzel', serif", fontStyle: 'italic', fontSize: '0.9rem' }}
-              >
-                Stories to be announced — check our Instagram{' '}
-                <a
-                  href="https://www.instagram.com/thenonsenserealm"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline transition-opacity hover:opacity-70"
-                  aria-label="@thenonsenserealm on Instagram (opens in new tab)"
-                  style={{ color: tealText }}
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5 py-2">
+                <p
+                  style={{ color: mutedColor, fontFamily: "'Cinzel', serif", fontStyle: 'italic', fontSize: '0.9rem' }}
                 >
-                  @thenonsenserealm
-                </a>{' '}
-                for updates.
-              </p>
+                  Stories to be announced — check our Instagram{' '}
+                  <a
+                    href="https://www.instagram.com/thenonsenserealm"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline transition-opacity hover:opacity-70"
+                    aria-label="@thenonsenserealm on Instagram (opens in new tab)"
+                    style={{ color: tealText }}
+                  >
+                    @thenonsenserealm
+                  </a>{' '}
+                  for updates.
+                </p>
+                <button
+                  onClick={() => setPreviewOpen(true)}
+                  className="flex-shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-heading text-xs tracking-wider uppercase font-bold transition-all hover:opacity-85 min-h-[44px]"
+                  style={{
+                    background: isDark ? 'rgba(0,168,150,0.15)' : 'rgba(0,168,150,0.1)',
+                    color: tealText,
+                    border: `1px solid ${isDark ? 'rgba(0,168,150,0.4)' : 'rgba(0,168,150,0.3)'}`,
+                    boxShadow: isDark ? '0 0 16px rgba(0,168,150,0.15)' : 'none',
+                  }}
+                  aria-label="Preview Volume I — see a sample of what's inside"
+                >
+                  <BookOpen size={13} aria-hidden="true" />
+                  Preview Issue
+                </button>
+              </div>
             )}
           </div>
         </motion.article>
       ))}
+
+      {previewOpen && <VolumeModal isDark={isDark} onClose={() => setPreviewOpen(false)} />}
 
       {/* Submissions nudge */}
       <motion.div
