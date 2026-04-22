@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import { Hero } from '../components/sections/Hero'
-import { Ticker } from '../components/sections/Ticker'
 import { aboutContent } from '../data/content'
 
 interface HomePageProps {
@@ -49,7 +48,6 @@ export function HomePage({ isDark, onNavigate }: HomePageProps) {
   return (
     <div>
       <Hero isDark={isDark} onNavigate={onNavigate} />
-      <Ticker isDark={isDark} />
 
       {/* About teaser */}
       <section className="max-w-4xl mx-auto px-6 py-20" aria-label="About the magazine">
@@ -71,7 +69,7 @@ export function HomePage({ isDark, onNavigate }: HomePageProps) {
               fontStyle: 'italic',
             }}
           >
-            "{aboutContent.origin}"
+            "The Nonsense Realm Magazine is a passion project, co-founded by four editors with a burning love for sci-fi and fantasy."
           </p>
           <button
             onClick={() => onNavigate('about')}

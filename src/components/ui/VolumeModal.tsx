@@ -1,51 +1,12 @@
 import { useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, BookOpen, Feather } from 'lucide-react'
+import { X, BookOpen, Feather, Instagram, ExternalLink } from 'lucide-react'
+import { volumeIPieces, type VolumePiece } from '../../data/content'
 
 interface VolumeModalProps {
   isDark: boolean
   onClose: () => void
 }
-
-const SAMPLE_PIECES = [
-  {
-    type: 'Flash Fiction',
-    title: 'The Last Cartographer',
-    author: 'A. submitted author',
-    excerpt: `The maps had started lying three years before anyone noticed. Small things at first — a road that bent slightly wrong, a river that ran the wrong shade of blue. By the time the coastlines began drifting, the Cartographers' Guild had dissolved into competing factions, each convinced the others were drawing from corrupted sources.
-
-Maren was the last one still working from observation rather than consensus. She climbed to the highest point of every city she visited and drew what she actually saw, rather than what the authorised maps insisted was there.
-
-The capital, according to official records, had seven bridges. Maren counted nine, including two that crossed rivers no one else would admit existed.`,
-  },
-  {
-    type: 'Short Story',
-    title: 'Gravity, Revised',
-    author: 'A. submitted author',
-    excerpt: `It started on a Tuesday, which felt appropriate. Tuesdays were always the most structurally unstable day of the week.
-
-Petra was pouring her second coffee when she noticed the mug was hovering approximately three centimetres above the counter. Not floating — that would have been alarming. Hovering. As if it had simply decided the counter's opinion on where it should be was more of a suggestion than a rule.
-
-She set it down with some firmness. It hovered again.
-
-"Right," she said, and went to find her notebook. If gravity had become negotiable, she wanted to document the terms.`,
-  },
-  {
-    type: 'Poetry',
-    title: 'Taxonomy of Impossible Things',
-    author: 'A. submitted author',
-    excerpt: `i. The moth that lives in the space between sleeping and waking,
-   that feeds on the residue of half-remembered dreams.
-
-ii. Rain that falls upward into a sky that doesn't want it,
-    that has its own plans, its own appointments elsewhere.
-
-iii. A door in the basement that was never installed,
-     that was always there,
-     that leads to a room the house has been keeping secret
-     since before the house was built.`,
-  },
-]
 
 export function VolumeModal({ isDark, onClose }: VolumeModalProps) {
   const overlayRef = useRef<HTMLDivElement>(null)
@@ -177,13 +138,14 @@ export function VolumeModal({ isDark, onClose }: VolumeModalProps) {
               </p>
             </div>
 
-            {/* Sample pieces */}
-            {SAMPLE_PIECES.map((piece, i) => (
+            {/* Pieces */}
+            {volumeIPieces.map((piece: VolumePiece, i: number) => (
               <div
                 key={i}
-                className="px-7 py-8"
-                style={{ borderBottom: i < SAMPLE_PIECES.length - 1 ? `1px solid ${divider}` : 'none' }}
+                className="px-7 py-10"
+                style={{ borderBottom: i < volumeIPieces.length - 1 ? `1px solid ${divider}` : 'none' }}
               >
+                {/* Type badge */}
                 <div className="flex items-center gap-2 mb-3">
                   <span
                     className="font-heading text-xs tracking-widest uppercase px-2.5 py-1 rounded-full"
@@ -198,24 +160,65 @@ export function VolumeModal({ isDark, onClose }: VolumeModalProps) {
                     {piece.type}
                   </span>
                 </div>
-                <h3
-                  className="font-display font-bold mb-1"
-                  style={{ fontSize: '1.15rem', color: textColor }}
-                >
+
+                {/* Title + author */}
+                <h3 className="font-display font-bold mb-1" style={{ fontSize: '1.25rem', color: textColor }}>
                   {piece.title}
                 </h3>
-                <p className="font-heading text-xs mb-5" style={{ color: isDark ? 'rgba(255,248,240,0.45)' : 'rgba(42,14,0,0.4)', fontStyle: 'italic' }}>
+                <p className="font-heading text-xs mb-6" style={{ color: isDark ? 'rgba(255,248,240,0.45)' : 'rgba(42,14,0,0.4)', fontStyle: 'italic' }}>
                   by {piece.author}
                 </p>
-                {piece.excerpt.split('\n\n').map((para, pi) => (
+
+                {/* Full text */}
+                {piece.paragraphs.map((para, pi) => (
                   <p
                     key={pi}
                     className={pi > 0 ? 'mt-4' : ''}
-                    style={{ fontFamily: "'Cinzel', serif", lineHeight: 1.9, color: mutedColor, fontSize: '0.93rem', whiteSpace: 'pre-line' }}
+                    style={{ fontFamily: "'Cinzel', serif", lineHeight: 1.95, color: mutedColor, fontSize: '0.93rem' }}
                   >
                     {para}
                   </p>
                 ))}
+
+                {/* Author bio */}
+                <div
+                  className="mt-10 pt-6 flex flex-col gap-3"
+                  style={{ borderTop: `1px solid ${divider}` }}
+                >
+                  <div className="flex items-center gap-2">
+                    <Feather size={12} style={{ color: '#c1440e' }} aria-hidden="true" />
+                    <span className="font-heading text-xs tracking-widest uppercase" style={{ color: '#c1440e' }}>
+                      About the Author
+                    </span>
+                  </div>
+                  <p className="font-heading font-semibold text-sm" style={{ color: textColor }}>
+                    {piece.author}
+                  </p>
+                  <p style={{ fontFamily: "'Cinzel', serif", lineHeight: 1.8, color: mutedColor, fontSize: '0.88rem' }}>
+                    {piece.authorBio}
+                  </p>
+                  {piece.authorLinks && piece.authorLinks.length > 0 && (
+                    <div className="flex flex-wrap gap-3 mt-1">
+                      {piece.authorLinks.map((link) => (
+                        <a
+                          key={link.url}
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 font-heading text-xs tracking-wider transition-opacity hover:opacity-70 min-h-[44px]"
+                          style={{ color: tealText }}
+                        >
+                          {link.url.includes('instagram') ? (
+                            <Instagram size={12} aria-hidden="true" />
+                          ) : (
+                            <ExternalLink size={12} aria-hidden="true" />
+                          )}
+                          {link.label}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
             ))}
 

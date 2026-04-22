@@ -102,13 +102,6 @@ function DoorPanel({ side }: { side: 'left' | 'right' }) {
         </g>
       )}
 
-      {/* Keyhole — only on right door */}
-      {isRight && (
-        <g transform="translate(113, 400)">
-          <circle cx="7" cy="7" r="7" stroke="#FFD700" strokeWidth="1.2" fill="rgba(0,0,0,0.5)" opacity="0.7" />
-          <path d="M4 14 L4 24 L10 24 L10 14" stroke="#FFD700" strokeWidth="1.2" fill="none" opacity="0.7" />
-        </g>
-      )}
 
       {/* Edge shadow — inner side */}
       {isRight ? (
@@ -268,7 +261,7 @@ export function DoorIntro({ onComplete }: DoorIntroProps) {
 
           {/* ── CENTER CONTENT ── */}
           <motion.div
-            className="absolute inset-0 flex flex-col items-center justify-center"
+            className="absolute inset-0 flex flex-col items-center justify-start pt-[14vh]"
             style={{ zIndex: 10, pointerEvents: 'none' }}
             animate={{ opacity: phase === 'opening' ? 0 : 1, scale: phase === 'opening' ? 0.93 : 1 }}
             transition={{ duration: 0.4, ease: 'easeIn' }}

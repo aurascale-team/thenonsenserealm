@@ -75,17 +75,6 @@ export function Hero({ isDark, onNavigate }: HeroProps) {
             Sci-Fi &amp; Fantasy Literary Magazine
           </p>
 
-          <h1
-            className="font-display font-bold leading-tight mb-6"
-            style={{
-              fontSize: 'clamp(2rem, 5vw, 3.2rem)',
-              color: isDark ? '#fff8f0' : '#2a0e00',
-            }}
-          >
-            More Weird. More Wacky.{' '}
-            <span style={{ color: '#c1440e' }}>More Nonsense.</span>
-          </h1>
-
           <p
             className="mb-9 leading-relaxed"
             style={{
@@ -95,8 +84,7 @@ export function Hero({ isDark, onNavigate }: HeroProps) {
               color: textMuted,
             }}
           >
-            A digital magazine dedicated to the strange, the fantastical, and the beautifully absurd.
-            Flash fiction, short stories, and poetry — published three times a year.
+            A digital magazine featuring short stories, flash fiction, and poetry. Publishing three times a year.
           </p>
 
           <div className="flex flex-wrap justify-center gap-4">
