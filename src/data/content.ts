@@ -110,6 +110,7 @@ export interface VolumePiece {
   type: string
   title: string
   author: string
+  authorImage?: string
   authorBio: string
   authorLinks?: { label: string; url: string }[]
   paragraphs: string[]
@@ -120,6 +121,7 @@ export const volumeIPieces: VolumePiece[] = [
     type: 'Flash Fiction',
     title: 'Alone In the Metaverse',
     author: 'Peter Wyn Mosey',
+    authorImage: '/peter-wyn-mosyn.png',
     authorBio: 'Peter Wyn Mosey is a Writer and Facilitator from South Wales. He has an MA in Scriptwriting and worked as a copywriter until the machines took over. Predominantly writing short stories and poetry, his work often explores the absurdity of life. He is currently working on his first novel, The Last Days of Death, which he hopes to complete this year.',
     authorLinks: [
       { label: '@petermoseycreates', url: 'https://www.instagram.com/petermoseycreates' },
@@ -151,6 +153,7 @@ export const volumeIPieces: VolumePiece[] = [
     type: 'Short Story',
     title: 'The Challenger',
     author: 'Thomas William Brewer',
+    authorImage: '/thomas-william-brewer.png',
     authorBio: 'Thomas William Brewer is a Rust Belt transplant living in the American South. His work has appeared in Cleaver Magazine, The Daily Drunk, and The Morgue, among other places, and he has a story forthcoming in the horror anthology Of Beasts & Bones from Inky Bones Press.',
     authorLinks: [
       { label: '@RealTomish', url: 'https://www.instagram.com/RealTomish' },

@@ -127,13 +127,13 @@ export function VolumeModal({ isDark, onClose }: VolumeModalProps) {
                   Editor's Note
                 </span>
               </div>
-              <p style={{ fontFamily: "'Cinzel', serif", lineHeight: 1.9, color: mutedColor, fontSize: '0.95rem' }}>
+              <p style={{ fontFamily: "'Glacial Indifference', sans-serif", lineHeight: 1.9, color: mutedColor, fontSize: '0.95rem' }}>
                 Welcome to the first issue of The Nonsense Realm. We asked for weird, wacky, and outlandish — and you delivered beyond anything we expected. This debut volume contains flash fiction, short stories, and poetry that push at the edges of sci-fi and fantasy, written by voices we're incredibly proud to platform.
               </p>
-              <p className="mt-4" style={{ fontFamily: "'Cinzel', serif", lineHeight: 1.9, color: mutedColor, fontSize: '0.95rem' }}>
+              <p className="mt-4" style={{ fontFamily: "'Glacial Indifference', sans-serif", lineHeight: 1.9, color: mutedColor, fontSize: '0.95rem' }}>
                 The pieces below are a preview. The full volume will be released on our website and social platforms when submissions close. Until then — enjoy the nonsense.
               </p>
-              <p className="mt-4 text-sm" style={{ fontFamily: "'Cinzel', serif", fontStyle: 'italic', color: isDark ? 'rgba(255,248,240,0.5)' : 'rgba(42,14,0,0.45)' }}>
+              <p className="mt-4 text-sm" style={{ fontFamily: "'Glacial Indifference', sans-serif", fontStyle: 'italic', color: isDark ? 'rgba(255,248,240,0.5)' : 'rgba(42,14,0,0.45)' }}>
                 — The Editors
               </p>
             </div>
@@ -174,7 +174,7 @@ export function VolumeModal({ isDark, onClose }: VolumeModalProps) {
                   <p
                     key={pi}
                     className={pi > 0 ? 'mt-4' : ''}
-                    style={{ fontFamily: "'Cinzel', serif", lineHeight: 1.95, color: mutedColor, fontSize: '0.93rem' }}
+                    style={{ fontFamily: "'Glacial Indifference', sans-serif", lineHeight: 1.95, color: mutedColor, fontSize: '0.93rem' }}
                   >
                     {para}
                   </p>
@@ -194,7 +194,7 @@ export function VolumeModal({ isDark, onClose }: VolumeModalProps) {
                   <p className="font-heading font-semibold text-sm" style={{ color: textColor }}>
                     {piece.author}
                   </p>
-                  <p style={{ fontFamily: "'Cinzel', serif", lineHeight: 1.8, color: mutedColor, fontSize: '0.88rem' }}>
+                  <p style={{ fontFamily: "'Glacial Indifference', sans-serif", lineHeight: 1.8, color: mutedColor, fontSize: '0.88rem' }}>
                     {piece.authorBio}
                   </p>
                   {piece.authorLinks && piece.authorLinks.length > 0 && (
@@ -230,7 +230,7 @@ export function VolumeModal({ isDark, onClose }: VolumeModalProps) {
               <p className="font-heading text-xs tracking-widest uppercase mb-2" style={{ color: '#c1440e' }}>
                 Submissions Open
               </p>
-              <p className="mb-5 text-sm" style={{ fontFamily: "'Cinzel', serif", color: mutedColor }}>
+              <p className="mb-5 text-sm" style={{ fontFamily: "'Glacial Indifference', sans-serif", color: mutedColor }}>
                 Want your work in Volume I or a future issue? Send it our way.
               </p>
               <a

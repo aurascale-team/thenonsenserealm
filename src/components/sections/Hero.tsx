@@ -78,7 +78,7 @@ export function Hero({ isDark, onNavigate }: HeroProps) {
           <p
             className="mb-9 leading-relaxed"
             style={{
-              fontFamily: "'Cinzel', serif",
+              fontFamily: "'Glacial Indifference', sans-serif",
               fontStyle: 'italic',
               fontSize: '1.05rem',
               color: textMuted,
@@ -191,7 +191,7 @@ export function Hero({ isDark, onNavigate }: HeroProps) {
               <h2 className="font-heading font-bold text-base mb-1.5" style={{ color: isDark ? '#fff8f0' : '#2a0e00' }}>
                 Browse the Volumes
               </h2>
-              <p className="text-xs leading-relaxed mb-4" style={{ color: isDark ? 'rgba(255,248,240,0.72)' : 'rgba(42,14,0,0.65)', fontFamily: "'Cinzel', serif" }}>
+              <p className="text-xs leading-relaxed mb-4" style={{ color: isDark ? 'rgba(255,248,240,0.72)' : 'rgba(42,14,0,0.65)', fontFamily: "'Glacial Indifference', sans-serif" }}>
                 Flash fiction, short stories, and poetry from the weird and wonderful — three issues a year.
               </p>
               <span
@@ -219,7 +219,7 @@ export function Hero({ isDark, onNavigate }: HeroProps) {
             {/* Image area */}
             <div className="relative h-32 overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80"
+                src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600&q=80"
                 alt=""
                 aria-hidden="true"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -242,7 +242,7 @@ export function Hero({ isDark, onNavigate }: HeroProps) {
               <h2 className="font-heading font-bold text-base mb-1.5" style={{ color: isDark ? '#fff8f0' : '#2a0e00' }}>
                 Reviews &amp; Spotlights
               </h2>
-              <p className="text-xs leading-relaxed mb-4" style={{ color: isDark ? 'rgba(255,248,240,0.72)' : 'rgba(42,14,0,0.65)', fontFamily: "'Cinzel', serif" }}>
+              <p className="text-xs leading-relaxed mb-4" style={{ color: isDark ? 'rgba(255,248,240,0.72)' : 'rgba(42,14,0,0.65)', fontFamily: "'Glacial Indifference', sans-serif" }}>
                 Our editors spotlight underground reads, post reviews, and champion the books they can't put down.
               </p>
               <span

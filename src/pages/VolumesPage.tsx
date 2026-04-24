@@ -33,7 +33,7 @@ export function VolumesPage({ isDark }: VolumesPageProps) {
         >
           Volumes
         </h1>
-        <p style={{ color: mutedColor, fontFamily: "'Cinzel', serif", fontStyle: 'italic', maxWidth: '38rem' }}>
+        <p style={{ color: mutedColor, fontFamily: "'Glacial Indifference', sans-serif", fontStyle: 'italic', maxWidth: '38rem' }}>
           Three volumes a year, chock-a-block with flash fiction, short stories, and poetry.
         </p>
         <div className="mt-4 h-px w-32" style={{ background: `linear-gradient(to right, ${tealText}, transparent)` }} />
@@ -72,7 +72,7 @@ export function VolumesPage({ isDark }: VolumesPageProps) {
               >
                 {vol.title}
               </div>
-              <p style={{ color: mutedColor, fontFamily: "'Cinzel', serif", fontSize: '0.9rem' }}>
+              <p style={{ color: mutedColor, fontFamily: "'Glacial Indifference', sans-serif", fontSize: '0.9rem' }}>
                 {vol.description}
               </p>
               <div className="flex items-center gap-3 mt-3">
@@ -102,10 +102,10 @@ export function VolumesPage({ isDark }: VolumesPageProps) {
                   Editor's Note
                 </span>
               </div>
-              <p style={{ fontFamily: "'Cinzel', serif", lineHeight: 1.85, color: mutedColor, fontSize: '0.88rem', fontStyle: 'italic', maxWidth: '52rem' }}>
+              <p style={{ fontFamily: "'Glacial Indifference', sans-serif", lineHeight: 1.85, color: mutedColor, fontSize: '0.88rem', fontStyle: 'italic', maxWidth: '52rem' }}>
                 Welcome to the first issue of The Nonsense Realm. We asked for weird, wacky, and outlandish — and you delivered beyond anything we expected. This debut volume contains flash fiction and short stories that push at the edges of sci-fi and fantasy, written by voices we're incredibly proud to platform.
               </p>
-              <p className="mt-2 text-xs" style={{ fontFamily: "'Cinzel', serif", fontStyle: 'italic', color: isDark ? 'rgba(255,248,240,0.4)' : 'rgba(42,14,0,0.38)' }}>
+              <p className="mt-2 text-xs" style={{ fontFamily: "'Glacial Indifference', sans-serif", fontStyle: 'italic', color: isDark ? 'rgba(255,248,240,0.4)' : 'rgba(42,14,0,0.38)' }}>
                 — The Editors
               </p>
             </div>
@@ -133,7 +133,7 @@ export function VolumesPage({ isDark }: VolumesPageProps) {
                         >
                           {story.title}
                         </span>
-                        <span className="text-xs ml-3" style={{ color: mutedColor, fontFamily: "'Cinzel', serif" }}>
+                        <span className="text-xs ml-3" style={{ color: mutedColor, fontFamily: "'Glacial Indifference', sans-serif" }}>
                           by {story.author}
                         </span>
                       </div>
@@ -148,7 +148,7 @@ export function VolumesPage({ isDark }: VolumesPageProps) {
                 })}
               </div>
             ) : (
-              <p style={{ color: mutedColor, fontFamily: "'Cinzel', serif", fontStyle: 'italic', fontSize: '0.9rem' }}>
+              <p style={{ color: mutedColor, fontFamily: "'Glacial Indifference', sans-serif", fontStyle: 'italic', fontSize: '0.9rem' }}>
                 Stories to be announced — check our Instagram{' '}
                 <a
                   href="https://www.instagram.com/thenonsenserealm"
@@ -180,7 +180,7 @@ export function VolumesPage({ isDark }: VolumesPageProps) {
           border: '1px solid rgba(0,168,150,0.2)',
         }}
       >
-        <p style={{ color: mutedColor, fontFamily: "'Cinzel', serif", fontStyle: 'italic' }}>
+        <p style={{ color: mutedColor, fontFamily: "'Glacial Indifference', sans-serif", fontStyle: 'italic' }}>
           Want to be in a future volume?{' '}
           <a
             href="mailto:thenonsenserealmmagazine@gmail.com"

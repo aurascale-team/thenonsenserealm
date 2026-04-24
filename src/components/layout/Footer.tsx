@@ -23,7 +23,7 @@ export function Footer({ isDark, onNavigate }: FooterProps) {
           <NonsenseLogo size="md" />
           <p
             className="mt-4 text-sm leading-relaxed"
-            style={{ color: mutedColor, fontFamily: "'Cinzel', serif", fontStyle: 'italic' }}
+            style={{ color: mutedColor, fontFamily: "'Glacial Indifference', sans-serif", fontStyle: 'italic' }}
           >
             A sci-fi &amp; fantasy literary magazine. Weird, wacky, and unashamedly so.
           </p>
@@ -39,7 +39,7 @@ export function Footer({ isDark, onNavigate }: FooterProps) {
                 <button
                   onClick={() => onNavigate(id)}
                   className="text-sm py-1 transition-opacity hover:opacity-70 min-h-[36px]"
-                  style={{ color: mutedColor, fontFamily: "'Cinzel', serif" }}
+                  style={{ color: mutedColor, fontFamily: "'Glacial Indifference', sans-serif" }}
                 >
                   {label}
                 </button>
@@ -49,7 +49,7 @@ export function Footer({ isDark, onNavigate }: FooterProps) {
               <button
                 onClick={() => onNavigate('copyright')}
                 className="text-sm py-1 transition-opacity hover:opacity-70 min-h-[36px]"
-                style={{ color: mutedColor, fontFamily: "'Cinzel', serif" }}
+                style={{ color: mutedColor, fontFamily: "'Glacial Indifference', sans-serif" }}
               >
                 Copyright
               </button>
@@ -67,7 +67,7 @@ export function Footer({ isDark, onNavigate }: FooterProps) {
               target="_blank"
               rel="noopener noreferrer"
               className="block text-sm py-1 transition-opacity hover:opacity-70"
-              style={{ color: mutedColor, fontFamily: "'Cinzel', serif" }}
+              style={{ color: mutedColor, fontFamily: "'Glacial Indifference', sans-serif" }}
               aria-label="The Nonsense Realm on Instagram (opens in new tab)"
             >
               @thenonsenserealm
@@ -75,7 +75,7 @@ export function Footer({ isDark, onNavigate }: FooterProps) {
             <a
               href="mailto:thenonsenserealmmagazine@gmail.com"
               className="block text-sm py-1 transition-opacity hover:opacity-70 break-all"
-              style={{ color: mutedColor, fontFamily: "'Cinzel', serif" }}
+              style={{ color: mutedColor, fontFamily: "'Glacial Indifference', sans-serif" }}
             >
               thenonsenserealmmagazine@gmail.com
             </a>

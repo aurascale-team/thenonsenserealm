@@ -38,7 +38,7 @@ export function CopyrightPage({ isDark }: CopyrightPageProps) {
         >
           <p
             style={{
-              fontFamily: "'Cinzel', serif",
+              fontFamily: "'Glacial Indifference', sans-serif",
               lineHeight: 1.95,
               color: mutedColor,
               fontSize: '0.97rem',
@@ -78,7 +78,7 @@ export function CopyrightPage({ isDark }: CopyrightPageProps) {
 
         <p
           className="mt-12 text-xs"
-          style={{ color: isDark ? 'rgba(255,248,240,0.3)' : 'rgba(42,14,0,0.35)', fontFamily: "'Cinzel', serif" }}
+          style={{ color: isDark ? 'rgba(255,248,240,0.3)' : 'rgba(42,14,0,0.35)', fontFamily: "'Glacial Indifference', sans-serif" }}
         >
           © {copyrightContent.year} The Nonsense Realm Magazine. All writers retain their own copyright.
         </p>

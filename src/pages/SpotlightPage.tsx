@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Star, User, X, ChevronRight } from 'lucide-react'
+import { Star, User, ChevronLeft, ChevronRight } from 'lucide-react'
 
 interface SpotlightPageProps {
   isDark: boolean
@@ -13,7 +13,7 @@ const REVIEWS = [
     genre: 'Dark Fantasy',
     rating: 5,
     reviewer: 'Laura',
-    image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400&q=80',
+    image: '/mordew.jpg',
     summary: 'God is dead, his corpse hidden in the catacombs beneath Mordew — and that\'s just the beginning. A magnificent, skin-crawling dark fantasy that latches on like a leech.',
     full: [
       '"God is dead, his corpse hidden in the catacombs beneath Mordew."',
@@ -30,7 +30,7 @@ const REVIEWS = [
     genre: 'Horror / Sci-Fi / Gothic',
     rating: 5,
     reviewer: 'Sophie',
-    image: 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=400&q=80',
+    image: '/prophet.jpg',
     summary: 'A shape-shifting romp with big ideas and a bigger heart. Weird sci-fi meets gothic horror — and I fell head over heels for it almost instantly.',
     full: [
       'I picked up Prophet (2023) from my library a few days ago not knowing anything about the book, besides a quick glance at the blurb and a quotation from C Pam Zhang declaring the novel a \'shape-shifting romp with big ideas and a bigger heart.\' I did not expect, at all, to fall—pretty much instantaneously—head over heels in love with it.',
@@ -46,7 +46,7 @@ const REVIEWS = [
     genre: 'Solarpunk / Sci-Fi',
     rating: 5,
     reviewer: 'Sophie',
-    image: 'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=400&q=80',
+    image: '/long long way.jpg',
     summary: 'Warm, inclusive, and alive. A small tunnelling ship crewed by different species just trying to make an honest living — this book will make you feel at home in the universe.',
     full: [
       'I was surprised by what sort of book this is. I contend I was misled by the title and starry sky on the cover, which suggest grand and bleak musings on the end of our isolation in the vast universe. Perhaps the hubris of billionaires and world leaders causing our small and angry planet\'s destruction. (Spoiler alert: the small and angry planet is not Earth). And it is all those musings, but as distant scenery.',
@@ -62,7 +62,7 @@ const REVIEWS = [
     genre: 'Speculative Fiction',
     rating: 4,
     reviewer: 'Sophie',
-    image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&q=80',
+    image: '/under the eye of the big bird.jpg',
     summary: 'Shortlisted for the International Booker Prize. Strange, beautifully written, and rewards active readers willing to lose themselves in its quietly radical world.',
     full: [
       'Shortlisted for the International Booker Prize, originally published in 2016 in Japanese, and translated by Asa Yoneda into English for release in the UK earlier this year, this is a strange, beautifully written, speculative fiction novel – except it\'s not. It\'s more accurate to describe this novel as a series of interconnected short stories which eventually form a cohesive whole.',
@@ -112,122 +112,392 @@ function StarRating({ rating, isDark }: { rating: number; isDark: boolean }) {
   )
 }
 
-interface ReviewModalProps {
-  review: typeof REVIEWS[0]
-  isDark: boolean
-  onClose: () => void
+// ── Book-flip reviews modal ───────────────────────────────────────────────────
+// Each spread = one full review. Left page = title/author/stars. Right page = review text.
+// Flipping moves to the next review entirely.
+
+function grain(opacity: number) {
+  return `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='${opacity}'/%3E%3C/svg%3E")`
 }
 
-function ReviewModal({ review, isDark, onClose }: ReviewModalProps) {
-  const surface = isDark ? 'rgba(26,9,0,0.98)' : '#ffffff'
-  const border = isDark ? 'rgba(193,68,14,0.25)' : 'rgba(193,68,14,0.15)'
-  const textColor = isDark ? '#fff8f0' : '#2a0e00'
-  const mutedColor = isDark ? 'rgba(255,248,240,0.82)' : 'rgba(42,14,0,0.75)'
-  const divider = isDark ? 'rgba(193,68,14,0.18)' : 'rgba(193,68,14,0.12)'
+interface ReviewTheme {
+  paper: string; paperLeft: string; ink: string; inkMuted: string
+  inkFaint: string; rule: string; isDark: boolean
+}
 
-  // Close on Escape, lock body scroll
-  useState(() => {
-    const handleKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
+function ReviewLeftPage({ review, t, idx, total }: { review: typeof REVIEWS[0]; t: ReviewTheme; idx: number; total: number }) {
+  return (
+    <div style={{
+      width: '100%', height: '100%', display: 'flex', flexDirection: 'column',
+      background: t.paperLeft, backgroundImage: grain(t.isDark ? 0.05 : 0.07),
+      padding: '2rem 2.5rem 1.5rem 3rem', overflow: 'hidden',
+    }}>
+      <p className="font-heading text-xs tracking-widest uppercase flex-shrink-0 mb-3" style={{ color: t.inkFaint, letterSpacing: '0.3em' }}>
+        The Nonsense Realm · Reviews
+      </p>
+      {/* Cover image */}
+      <div className="flex-shrink-0 mb-4" style={{ height: '38%', overflow: 'hidden', border: `1px solid ${t.rule}` }}>
+        <img
+          src={review.image}
+          alt={`Cover of ${review.title}`}
+          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}
+        />
+      </div>
+      <div className="flex items-center gap-3 mb-3" aria-hidden="true">
+        <div className="flex-1 h-px" style={{ background: t.rule }} />
+        <span style={{ color: t.rule, fontSize: '0.65rem' }}>◆</span>
+        <div className="flex-1 h-px" style={{ background: t.rule }} />
+      </div>
+      <p className="font-heading text-xs tracking-widest uppercase mb-2" style={{ color: t.inkFaint }}>{review.genre}</p>
+      <h2 id="review-modal-title" className="font-display font-bold mb-1"
+        style={{ fontSize: 'clamp(1.1rem, 2.5vw, 1.6rem)', color: t.ink, lineHeight: 1.15 }}>
+        {review.title}
+      </h2>
+      <p style={{ fontFamily: "'Glacial Indifference', sans-serif", fontStyle: 'italic', fontSize: '0.85rem', color: t.inkMuted }}>
+        {review.author}
+      </p>
+      <div className="flex items-center gap-3 mt-3">
+        <StarRating rating={review.rating} isDark={t.isDark} />
+        <span style={{ fontFamily: "'Glacial Indifference', sans-serif", fontSize: '0.75rem', color: t.inkFaint, fontStyle: 'italic' }}>
+          reviewed by {review.reviewer}
+        </span>
+      </div>
+      <p className="font-heading text-xs text-center mt-auto pt-3 flex-shrink-0" style={{ color: t.inkFaint }}>— {idx + 1} / {total} —</p>
+    </div>
+  )
+}
+
+function ReviewRightPage({ review, t, idx }: { review: typeof REVIEWS[0]; t: ReviewTheme; idx: number }) {
+  const firstPara = review.full[0]
+  const restParas = review.full.slice(1)
+  const dropChar = firstPara.charAt(0) === '"' ? firstPara.charAt(1) : firstPara.charAt(0)
+  const afterDrop = firstPara.charAt(0) === '"' ? '"' + firstPara.slice(2) : firstPara.slice(1)
+
+  return (
+    <div style={{
+      width: '100%', height: '100%', display: 'flex', flexDirection: 'column',
+      background: t.paper, backgroundImage: grain(t.isDark ? 0.04 : 0.06),
+      padding: '3rem 1rem 2rem 2.5rem', overflow: 'hidden',
+    }}>
+      <p className="font-heading text-xs tracking-widest uppercase mb-4 flex-shrink-0" style={{ color: t.inkFaint }}>
+        {review.title}
+      </p>
+      <div className="flex-1 overflow-y-auto pr-4" style={{ scrollbarWidth: 'thin' }}>
+        <p style={{ fontFamily: "'Glacial Indifference', sans-serif", lineHeight: 2, color: t.inkMuted, fontSize: '0.95rem', textAlign: 'justify', fontStyle: 'italic' }}>
+          <span aria-hidden="true" style={{
+            float: 'left', fontFamily: "'Cinzel Decorative', serif",
+            fontSize: '3.8rem', lineHeight: '0.78',
+            marginRight: '0.07em', marginTop: '0.1em',
+            color: t.ink, fontWeight: 900,
+          }}>
+            {dropChar}
+          </span>
+          {afterDrop}
+        </p>
+        {restParas.map((para, pi) => (
+          <p key={pi} className="mt-5"
+            style={{ fontFamily: "'Glacial Indifference', sans-serif", lineHeight: 2, color: t.inkMuted, fontSize: '0.95rem', textAlign: 'justify' }}>
+            {para}
+          </p>
+        ))}
+      </div>
+      <p className="font-heading text-xs text-center mt-3 flex-shrink-0" style={{ color: t.inkFaint }}>— {idx + 1} —</p>
+    </div>
+  )
+}
+
+interface ReviewsBookProps {
+  isDark: boolean
+  onClose: () => void
+  initialIndex?: number
+}
+
+function ReviewsBook({ isDark, onClose, initialIndex = 0 }: ReviewsBookProps) {
+  const overlayRef = useRef<HTMLDivElement>(null)
+  const closeRef = useRef<HTMLButtonElement>(null)
+  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth < 640)
+
+  useEffect(() => {
+    const update = () => setIsMobile(window.innerWidth < 640)
+    window.addEventListener('resize', update)
+    return () => window.removeEventListener('resize', update)
+  }, [])
+
+  const total = REVIEWS.length
+  const [current, setCurrent] = useState(initialIndex)
+  const [isFlipping, setIsFlipping] = useState(false)
+  const [flipDir, setFlipDir] = useState<'forward' | 'back'>('forward')
+  const [next, setNext] = useState(initialIndex)
+
+  useEffect(() => { closeRef.current?.focus() }, [])
+
+  const triggerFlip = (dir: 'forward' | 'back', target: number) => {
+    if (isFlipping) return
+    setFlipDir(dir); setNext(target); setIsFlipping(true)
+    setTimeout(() => { setCurrent(target); setIsFlipping(false) }, 480)
+  }
+
+  const goForward = () => { if (current < total - 1) triggerFlip('forward', current + 1) }
+  const goBack = () => { if (current > 0) triggerFlip('back', current - 1) }
+
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose()
+      if (e.key === 'ArrowRight') goForward()
+      if (e.key === 'ArrowLeft') goBack()
+    }
     document.addEventListener('keydown', handleKey)
     document.body.style.overflow = 'hidden'
-    return () => {
-      document.removeEventListener('keydown', handleKey)
-      document.body.style.overflow = ''
-    }
-  })
+    return () => { document.removeEventListener('keydown', handleKey); document.body.style.overflow = '' }
+  }, [onClose, current, isFlipping])
+
+  const t: ReviewTheme = {
+    paper: isDark ? '#1c0f06' : '#f4ede0',
+    paperLeft: isDark ? '#160c04' : '#ede4d0',
+    ink: isDark ? '#e8ddd0' : '#1a0900',
+    inkMuted: isDark ? 'rgba(232,221,208,0.92)' : 'rgba(26,9,0,0.82)',
+    inkFaint: isDark ? 'rgba(232,221,208,0.28)' : 'rgba(26,9,0,0.25)',
+    rule: isDark ? 'rgba(193,68,14,0.4)' : 'rgba(193,68,14,0.32)',
+    isDark,
+  }
+
+  const bookShadow = isDark
+    ? '16px 16px 0 rgba(0,0,0,0.55), 0 48px 100px rgba(0,0,0,0.75)'
+    : '16px 16px 0 rgba(26,9,0,0.18), 0 48px 100px rgba(0,0,0,0.45)'
+
+  const flipFromRight = flipDir === 'forward'
+  const cur = REVIEWS[current]
+  const nxt = REVIEWS[next]
+
+  // Desktop: render a full two-page spread for a given review index
+  const renderDesktopSpread = (idx: number, zIndex = 0, interactive = false) => {
+    const rev = REVIEWS[idx]
+    return (
+      <div className="absolute inset-0 flex" style={{ zIndex }}>
+        {/* Left page: click to go back (non-scrollable content) */}
+        <div
+          onClick={interactive && !isFlipping && idx > 0 ? goBack : undefined}
+          style={{ width: '50%', height: '100%', borderRight: `1px solid ${t.rule}`, cursor: interactive && idx > 0 ? 'w-resize' : 'default' }}
+        >
+          <ReviewLeftPage review={rev} t={t} idx={idx} total={total} />
+        </div>
+        {/* Right page: scrollable review text, click right edge to advance */}
+        <div style={{ width: '50%', height: '100%', position: 'relative' }}>
+          <ReviewRightPage review={rev} t={t} idx={idx} />
+          {interactive && idx < total - 1 && (
+            <button
+              onClick={!isFlipping ? goForward : undefined}
+              className="absolute right-0 top-0 bottom-0 w-10 opacity-0 cursor-e-resize"
+              aria-label="Next review" style={{ zIndex: 5 }}
+            />
+          )}
+        </div>
+      </div>
+    )
+  }
+
+  // Mobile: show left page (cover) on even, right page (text) on odd sub-index
+  // For simplicity on mobile: show left page only (tap right to see review text)
+  const [mobileTab, setMobileTab] = useState<'left' | 'right'>('left')
+  useEffect(() => { setMobileTab('left') }, [current])
+
+  const renderMobileSpread = (idx: number, tab: 'left' | 'right', zIndex = 0) => {
+    const rev = REVIEWS[idx]
+    return (
+      <div className="absolute inset-0" style={{ zIndex }}>
+        {tab === 'left'
+          ? <ReviewLeftPage review={rev} t={t} idx={idx} total={total} />
+          : <ReviewRightPage review={rev} t={t} idx={idx} />}
+      </div>
+    )
+  }
+
+  // Mobile flip logic: tap right → show text; tap left → show cover; at edges navigate reviews
+  const [mobileIsFlipping, setMobileIsFlipping] = useState(false)
+  const [mobileFlipDir, setMobileFlipDir] = useState<'forward' | 'back'>('forward')
+  const [mobileNextTab, setMobileNextTab] = useState<'left' | 'right'>('left')
+  const [mobileNextIdx, setMobileNextIdx] = useState(0)
+
+  const triggerMobileFlip = (dir: 'forward' | 'back', toIdx: number, toTab: 'left' | 'right') => {
+    if (mobileIsFlipping) return
+    setMobileFlipDir(dir); setMobileNextIdx(toIdx); setMobileNextTab(toTab); setMobileIsFlipping(true)
+    setTimeout(() => { setCurrent(toIdx); setMobileTab(toTab); setMobileIsFlipping(false) }, 480)
+  }
+
+  const mobileGoForward = () => {
+    if (mobileTab === 'left') triggerMobileFlip('forward', current, 'right')
+    else if (current < total - 1) triggerMobileFlip('forward', current + 1, 'left')
+  }
+  const mobileGoBack = () => {
+    if (mobileTab === 'right') triggerMobileFlip('back', current, 'left')
+    else if (current > 0) triggerMobileFlip('back', current - 1, 'right')
+  }
+
+  const mobileFlipFromRight = mobileFlipDir === 'forward'
 
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.2 }}
-      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-6"
-      style={{ background: 'rgba(0,0,0,0.72)', backdropFilter: 'blur(6px)' }}
-      onClick={(e) => { if (e.target === e.currentTarget) onClose() }}
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="review-modal-title"
+      ref={overlayRef}
+      initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
+      className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-5"
+      style={{ background: 'rgba(0,0,0,0.88)', backdropFilter: 'blur(12px)' }}
+      onClick={(e) => { if (e.target === overlayRef.current) onClose() }}
+      role="dialog" aria-modal="true" aria-labelledby="review-modal-title"
     >
-      <motion.div
-        initial={{ opacity: 0, y: 40, scale: 0.97 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        exit={{ opacity: 0, y: 24, scale: 0.97 }}
-        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-        className="relative w-full sm:max-w-2xl max-h-[92vh] sm:max-h-[85vh] flex flex-col rounded-t-3xl sm:rounded-3xl overflow-hidden"
-        style={{ background: surface, border: `1px solid ${border}`, boxShadow: '0 32px 80px rgba(0,0,0,0.5)' }}
-      >
-        {/* Header */}
-        <div
-          className="flex-shrink-0 flex items-start justify-between gap-4 px-7 py-5 border-b"
-          style={{ borderColor: divider }}
-        >
-          <div>
-            <p className="font-heading text-xs tracking-widest uppercase mb-1" style={{ color: '#c1440e' }}>
-              {review.genre}
-            </p>
-            <h2
-              id="review-modal-title"
-              className="font-display font-bold leading-tight"
-              style={{ fontSize: 'clamp(1.1rem, 3vw, 1.4rem)', color: textColor }}
-            >
-              {review.title}
-            </h2>
-            <p className="font-heading text-sm mt-0.5" style={{ color: mutedColor, fontStyle: 'italic' }}>
-              {review.author}
-            </p>
-          </div>
-          <button
-            onClick={onClose}
-            autoFocus
-            className="flex-shrink-0 flex items-center justify-center w-9 h-9 rounded-full transition-opacity hover:opacity-70 min-h-[44px] min-w-[44px]"
-            aria-label="Close review"
-            style={{ background: isDark ? 'rgba(255,248,240,0.08)' : 'rgba(42,14,0,0.06)', color: textColor }}
-          >
-            <X size={15} aria-hidden="true" />
+      <div className="relative flex flex-col" style={{ width: '100%', maxWidth: '1100px' }}>
+
+        {/* Top bar */}
+        <div className="flex items-center justify-between mb-3 px-1">
+          <p className="font-heading text-xs tracking-widest" style={{ color: 'rgba(255,255,255,0.35)' }}>
+            {current + 1} / {total}
+          </p>
+          <button ref={closeRef} onClick={onClose}
+            className="font-heading text-xs tracking-wider uppercase transition-opacity hover:opacity-70 min-h-[44px] px-2"
+            aria-label="Close" style={{ color: 'rgba(255,255,255,0.5)' }}>
+            Close
           </button>
         </div>
 
-        {/* Scrollable body */}
-        <div className="flex-1 overflow-y-auto px-7 py-6 space-y-5">
-          <div className="flex items-center gap-3 pb-5" style={{ borderBottom: `1px solid ${divider}` }}>
-            <StarRating rating={review.rating} isDark={isDark} />
-            <div className="flex items-center gap-1.5">
-              <div
-                className="w-5 h-5 rounded-full flex items-center justify-center"
-                style={{ background: isDark ? 'rgba(193,68,14,0.2)' : 'rgba(193,68,14,0.1)' }}
-                aria-hidden="true"
-              >
-                <User size={10} style={{ color: '#c1440e' }} />
-              </div>
-              <span className="font-heading text-xs" style={{ color: isDark ? 'rgba(255,248,240,0.45)' : 'rgba(42,14,0,0.4)', fontStyle: 'italic' }}>
-                Reviewed by {review.reviewer}
-              </span>
-            </div>
-          </div>
-
-          {review.full.map((para, i) => (
-            <p
-              key={i}
-              style={{
-                fontFamily: "'Cinzel', serif",
-                lineHeight: 1.9,
-                color: mutedColor,
-                fontSize: '0.93rem',
-                fontStyle: i === 0 ? 'italic' : 'normal',
-              }}
-            >
-              {para}
-            </p>
-          ))}
+        {/* Book */}
+        <div className="relative w-full" style={{ height: isMobile ? 'min(72vh, 580px)' : 'min(76vh, 680px)', boxShadow: bookShadow }}>
+          {isMobile ? (
+            <>
+              {mobileIsFlipping && renderMobileSpread(mobileNextIdx, mobileNextTab, 0)}
+              {!mobileIsFlipping && renderMobileSpread(current, mobileTab, 1)}
+              {mobileIsFlipping && (
+                <motion.div
+                  initial={{ rotateY: 0 }}
+                  animate={{ rotateY: mobileFlipFromRight ? -180 : 180 }}
+                  transition={{ duration: 0.48, ease: [0.4, 0, 0.2, 1] }}
+                  style={{
+                    position: 'absolute', inset: 0,
+                    transformOrigin: mobileFlipFromRight ? 'left center' : 'right center',
+                    transformStyle: 'preserve-3d', zIndex: 10,
+                  }}
+                >
+                  <div style={{ position: 'absolute', inset: 0, backfaceVisibility: 'hidden' }}>
+                    {mobileTab === 'left'
+                      ? <ReviewLeftPage review={REVIEWS[current]} t={t} idx={current} total={total} />
+                      : <ReviewRightPage review={REVIEWS[current]} t={t} idx={current} />}
+                  </div>
+                  <div style={{ position: 'absolute', inset: 0, backfaceVisibility: 'hidden', transform: 'rotateY(180deg)', filter: 'brightness(0.5)' }}>
+                    {mobileTab === 'left'
+                      ? <ReviewLeftPage review={REVIEWS[current]} t={t} idx={current} total={total} />
+                      : <ReviewRightPage review={REVIEWS[current]} t={t} idx={current} />}
+                  </div>
+                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: [0, 0.5, 0] }} transition={{ duration: 0.48 }}
+                    style={{ position: 'absolute', inset: 0, pointerEvents: 'none',
+                      background: mobileFlipFromRight
+                        ? 'linear-gradient(to right, rgba(0,0,0,0.35) 0%, transparent 60%)'
+                        : 'linear-gradient(to left, rgba(0,0,0,0.35) 0%, transparent 60%)',
+                    }} />
+                </motion.div>
+              )}
+              <button onClick={mobileGoBack}
+                disabled={(mobileTab === 'left' && current <= 0) || mobileIsFlipping}
+                className="absolute left-0 top-0 bottom-0 w-1/3 opacity-0 cursor-pointer disabled:cursor-default"
+                aria-label="Previous" style={{ zIndex: 15 }} />
+              <button onClick={mobileGoForward}
+                disabled={(mobileTab === 'right' && current >= total - 1) || mobileIsFlipping}
+                className="absolute right-0 top-0 bottom-0 w-1/3 opacity-0 cursor-pointer disabled:cursor-default"
+                aria-label="Next" style={{ zIndex: 15 }} />
+            </>
+          ) : (
+            <>
+              {isFlipping && renderDesktopSpread(next, 0)}
+              {!isFlipping && renderDesktopSpread(current, 1, true)}
+              {isFlipping && (
+                <>
+                  {/* Still half */}
+                  <div className="absolute inset-0 flex pointer-events-none" style={{ zIndex: 5 }}>
+                    {flipFromRight ? (
+                      <div style={{ width: '50%', height: '100%', borderRight: `1px solid ${t.rule}` }}>
+                        <ReviewLeftPage review={cur} t={t} idx={current} total={total} />
+                      </div>
+                    ) : (
+                      <>
+                        <div style={{ width: '50%' }} />
+                        <div style={{ width: '50%', height: '100%' }}>
+                          <ReviewRightPage review={cur} t={t} idx={current} />
+                        </div>
+                      </>
+                    )}
+                  </div>
+                  {/* Flipping half */}
+                  <motion.div
+                    initial={{ rotateY: 0 }}
+                    animate={{ rotateY: flipFromRight ? -180 : 180 }}
+                    transition={{ duration: 0.48, ease: [0.4, 0, 0.2, 1] }}
+                    style={{
+                      position: 'absolute', top: 0, bottom: 0, width: '50%',
+                      ...(flipFromRight ? { left: '50%', transformOrigin: 'left center' } : { right: '50%', transformOrigin: 'right center' }),
+                      transformStyle: 'preserve-3d', zIndex: 10, perspective: '1400px',
+                    }}
+                  >
+                    <div style={{ position: 'absolute', inset: 0, backfaceVisibility: 'hidden' }}>
+                      {flipFromRight
+                        ? <ReviewRightPage review={cur} t={t} idx={current} />
+                        : <ReviewLeftPage review={cur} t={t} idx={current} total={total} />}
+                    </div>
+                    <div style={{ position: 'absolute', inset: 0, backfaceVisibility: 'hidden', transform: 'rotateY(180deg)', filter: 'brightness(0.55)' }}>
+                      {flipFromRight
+                        ? <ReviewRightPage review={nxt} t={t} idx={next} />
+                        : <ReviewLeftPage review={nxt} t={t} idx={next} total={total} />}
+                    </div>
+                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: [0, 0.6, 0] }} transition={{ duration: 0.48 }}
+                      style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 1,
+                        background: flipFromRight
+                          ? 'linear-gradient(to right, rgba(0,0,0,0.4) 0%, transparent 50%)'
+                          : 'linear-gradient(to left, rgba(0,0,0,0.4) 0%, transparent 50%)',
+                      }} />
+                  </motion.div>
+                </>
+              )}
+              {/* Spine */}
+              <div className="absolute inset-y-0 pointer-events-none" aria-hidden="true" style={{
+                left: '50%', transform: 'translateX(-50%)', width: '50px', zIndex: 20,
+                background: isDark
+                  ? 'linear-gradient(to right, rgba(0,0,0,0.45) 0%, transparent 50%, rgba(0,0,0,0.3) 100%)'
+                  : 'linear-gradient(to right, rgba(0,0,0,0.12) 0%, transparent 50%, rgba(0,0,0,0.08) 100%)',
+              }} />
+            </>
+          )}
         </div>
-      </motion.div>
+
+        {/* Nav */}
+        <div className="flex items-center justify-between mt-4 px-1">
+          <button onClick={isMobile ? mobileGoBack : goBack}
+            disabled={isMobile ? ((mobileTab === 'left' && current <= 0) || mobileIsFlipping) : (current <= 0 || isFlipping)}
+            className="flex items-center gap-2 font-heading text-xs tracking-wider uppercase transition-opacity hover:opacity-80 disabled:opacity-20 min-h-[44px] px-3"
+            style={{ color: 'rgba(255,255,255,0.6)' }}>
+            <ChevronLeft size={16} aria-hidden="true" /> Prev
+          </button>
+          <div className="flex items-center gap-2">
+            {REVIEWS.map((rev, i) => (
+              <button key={i}
+                onClick={() => { if (!(isMobile ? mobileIsFlipping : isFlipping) && i !== current) triggerFlip(i > current ? 'forward' : 'back', i) }}
+                aria-label={`Go to review: ${rev.title}`}
+                className="rounded-full transition-all"
+                style={{ width: i === current ? 20 : 6, height: 6, background: i === current ? 'rgba(255,215,0,0.7)' : 'rgba(255,255,255,0.25)' }}
+              />
+            ))}
+          </div>
+          <button onClick={isMobile ? mobileGoForward : goForward}
+            disabled={isMobile ? ((mobileTab === 'right' && current >= total - 1) || mobileIsFlipping) : (current >= total - 1 || isFlipping)}
+            className="flex items-center gap-2 font-heading text-xs tracking-wider uppercase transition-opacity hover:opacity-80 disabled:opacity-20 min-h-[44px] px-3"
+            style={{ color: 'rgba(255,255,255,0.6)' }}>
+            Next <ChevronRight size={16} aria-hidden="true" />
+          </button>
+        </div>
+
+      </div>
     </motion.div>
   )
 }
 
 export function SpotlightPage({ isDark }: SpotlightPageProps) {
-  const [openReview, setOpenReview] = useState<typeof REVIEWS[0] | null>(null)
+  const [openAtIndex, setOpenAtIndex] = useState<number | null>(null)
 
   const textColor = isDark ? '#fff8f0' : '#2a0e00'
   const mutedColor = isDark ? 'rgba(255,248,240,0.82)' : 'rgba(42,14,0,0.75)'
@@ -250,7 +520,7 @@ export function SpotlightPage({ isDark }: SpotlightPageProps) {
           >
             Underground Reads
           </h1>
-          <p style={{ color: mutedColor, fontFamily: "'Cinzel', serif", fontStyle: 'italic', maxWidth: '38rem' }}>
+          <p style={{ color: mutedColor, fontFamily: "'Glacial Indifference', sans-serif", fontStyle: 'italic', maxWidth: '38rem' }}>
             Our editors spotlight the books they can't put down. Click any card to read the full review.
           </p>
           <div className="mt-4 h-px w-32" style={{ background: 'linear-gradient(to right, #c1440e, transparent)' }} />
@@ -262,7 +532,7 @@ export function SpotlightPage({ isDark }: SpotlightPageProps) {
             {REVIEWS.map((review, i) => (
               <motion.button
                 key={review.title}
-                onClick={() => setOpenReview(review)}
+                onClick={() => setOpenAtIndex(i)}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -305,7 +575,7 @@ export function SpotlightPage({ isDark }: SpotlightPageProps) {
                   <StarRating rating={review.rating} isDark={isDark} />
                   <p
                     className="mt-3 flex-1 text-xs leading-relaxed line-clamp-3"
-                    style={{ fontFamily: "'Cinzel', serif", color: mutedColor, fontStyle: 'italic' }}
+                    style={{ fontFamily: "'Glacial Indifference', sans-serif", color: mutedColor, fontStyle: 'italic' }}
                   >
                     "{review.summary}"
                   </p>
@@ -344,13 +614,12 @@ export function SpotlightPage({ isDark }: SpotlightPageProps) {
 
       </div>
 
-      {/* Review modal */}
       <AnimatePresence>
-        {openReview && (
-          <ReviewModal
-            review={openReview}
+        {openAtIndex !== null && (
+          <ReviewsBook
             isDark={isDark}
-            onClose={() => setOpenReview(null)}
+            initialIndex={openAtIndex}
+            onClose={() => setOpenAtIndex(null)}
           />
         )}
       </AnimatePresence>

@@ -29,7 +29,7 @@ export function EditorsPage({ isDark }: EditorsPageProps) {
         >
           Meet the Editors
         </h1>
-        <p style={{ color: mutedColor, fontFamily: "'Cinzel', serif", fontStyle: 'italic', maxWidth: '38rem' }}>
+        <p style={{ color: mutedColor, fontFamily: "'Glacial Indifference', sans-serif", fontStyle: 'italic', maxWidth: '38rem' }}>
           Four editors with a burning love for sci-fi and fantasy — and frankly, a fair amount of spite.
         </p>
         <div className="mt-4 h-px w-32" style={{ background: `linear-gradient(to right, ${accentGold}, transparent)` }} />
@@ -98,7 +98,7 @@ export function EditorsPage({ isDark }: EditorsPageProps) {
                 <p
                   key={pi}
                   className={pi > 0 ? 'mt-4' : ''}
-                  style={{ color: mutedColor, fontFamily: "'Cinzel', serif", lineHeight: 1.85, fontSize: '0.97rem' }}
+                  style={{ color: mutedColor, fontFamily: "'Glacial Indifference', sans-serif", lineHeight: 1.85, fontSize: '0.97rem' }}
                 >
                   {para}
                 </p>
@@ -115,7 +115,7 @@ export function EditorsPage({ isDark }: EditorsPageProps) {
                       <li
                         key={r}
                         className="text-sm"
-                        style={{ color: mutedColor, fontFamily: "'Cinzel', serif", fontStyle: 'italic' }}
+                        style={{ color: mutedColor, fontFamily: "'Glacial Indifference', sans-serif", fontStyle: 'italic' }}
                       >
                         — {r}
                       </li>
@@ -140,7 +140,7 @@ export function EditorsPage({ isDark }: EditorsPageProps) {
                           background: isDark ? 'rgba(154,104,0,0.15)' : 'rgba(154,104,0,0.1)',
                           color: isDark ? '#e8c44a' : '#7a5200',
                           border: `1px solid ${isDark ? 'rgba(255,215,0,0.25)' : 'rgba(154,104,0,0.3)'}`,
-                          fontFamily: "'Cinzel', serif",
+                          fontFamily: "'Glacial Indifference', sans-serif",
                           fontStyle: 'italic',
                         }}
                       >
