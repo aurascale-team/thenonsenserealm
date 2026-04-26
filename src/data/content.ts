@@ -356,14 +356,11 @@ export const volumes = [
     number: "I",
     title: "Volume I",
     year: 2026,
-    status: "published" as 'published' | 'upcoming',
+    status: "upcoming" as 'published' | 'upcoming',
     coverImage: "https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=600&q=80",
     color: "#00a896",
     description: "Our debut issue — featuring flash fiction and short stories from two brilliant new voices.",
-    stories: [
-      { title: 'Alone In the Metaverse', author: 'Peter Wyn Mosey', genre: 'Flash Fiction' },
-      { title: 'The Challenger', author: 'Thomas William Brewer', genre: 'Short Story' },
-    ],
+    stories: [],
   },
 ]
 

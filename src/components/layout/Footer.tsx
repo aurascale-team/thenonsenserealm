@@ -88,7 +88,7 @@ export function Footer({ isDark, onNavigate }: FooterProps) {
           </p>
         </div>
       </div>
-      <p className="text-center mt-10 text-xs" style={{ color: isDark ? 'rgba(255,248,240,0.2)' : 'rgba(42,14,0,0.25)', fontFamily: "'Glacial Indifference', sans-serif" }}>
+      <p className="text-center mt-10 text-xs" style={{ color: isDark ? 'rgba(255,248,240,0.35)' : 'rgba(42,14,0,0.4)', fontFamily: "'Glacial Indifference', sans-serif" }}>
         Website created by <a href="https://aurascale.co.uk" target="_blank" rel="noopener noreferrer" className="transition-opacity hover:opacity-70">AuraScale</a>
       </p>
     </footer>
