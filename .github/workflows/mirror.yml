@@ -18,6 +18,9 @@ jobs:
           fetch-depth: 0
 
       - name: Push to AuraScale repo
+        env:
+          TOKEN: ${{ secrets.AURASCALE_TOKEN }}
         run: |
-          git remote add aurascale https://x-access-token:${{ secrets.AURASCALE_TOKEN }}@github.com/aurascale-team/thenonsenserealm.git
-          git push aurascale main --force
+          git config user.email "aurascale-team@users.noreply.github.com"
+          git config user.name "aurascale-team"
+          git push https://aurascale-team:${TOKEN}@github.com/aurascale-team/thenonsenserealm.git main --force
