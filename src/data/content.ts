@@ -351,16 +351,31 @@ export const volumeIPieces: VolumePiece[] = [
 ]
 
 // ── Volumes ──────────────────────────────────────────────────────────────────
-export const volumes = [
+export interface VolumeStory {
+  title: string
+  author: string
+  genre: string
+}
+
+export const volumes: Array<{
+  number: string
+  title: string
+  year: number
+  status: 'published' | 'upcoming'
+  coverImage: string
+  color: string
+  description: string
+  stories: VolumeStory[]
+}> = [
   {
     number: "I",
     title: "Volume I",
     year: 2026,
-    status: "upcoming" as 'published' | 'upcoming',
+    status: "upcoming",
     coverImage: "https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=600&q=80",
     color: "#00a896",
     description: "Our debut issue — featuring flash fiction and short stories from two brilliant new voices.",
-    stories: [],
+    stories: [] as { title: string; author: string; genre: string }[],
   },
 ]
 
