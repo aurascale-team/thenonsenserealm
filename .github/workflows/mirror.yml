@@ -17,20 +17,12 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Debug token presence
-        env:
-          TOKEN: ${{ secrets.AURASCALE_TOKEN }}
-        run: |
-          if [ -z "$TOKEN" ]; then
-            echo "TOKEN is empty - secret not found"
-          else
-            echo "TOKEN is set (length: ${#TOKEN})"
-          fi
-
       - name: Push to AuraScale repo
         env:
           TOKEN: ${{ secrets.AURASCALE_TOKEN }}
         run: |
-          git config user.email "reegen@aurascale.co.uk"
-          git config user.name "aurascale-team"
-          git push https://aurascale-team:${TOKEN}@github.com/aurascale-team/thenonsenserealm.git main --force
+          git config --global credential.helper ""
+          git config --global user.email "reegen@aurascale.co.uk"
+          git config --global user.name "aurascale-team"
+          git remote add aurascale https://aurascale-team:${TOKEN}@github.com/aurascale-team/thenonsenserealm.git
+          git push aurascale HEAD:main --force
