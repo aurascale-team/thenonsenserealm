@@ -29,7 +29,7 @@ const REVIEWS = [
     author: 'Helen Macdonald and Sin Blaché',
     genre: 'Horror / Sci-Fi / Gothic',
     rating: 5,
-    reviewer: 'Sophie',
+    reviewer: 'Laura',
     image: '/prophet.jpg',
     summary: 'A shape-shifting romp with big ideas and a bigger heart. Weird sci-fi meets gothic horror — and I fell head over heels for it almost instantly.',
     full: [
