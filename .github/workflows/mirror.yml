@@ -16,12 +16,12 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          persist-credentials: false
 
       - name: Push to AuraScale repo
         env:
           TOKEN: ${{ secrets.AURASCALE_TOKEN }}
         run: |
-          git config --global credential.helper ""
           git config --global user.email "reegen@aurascale.co.uk"
           git config --global user.name "aurascale-team"
           git remote add aurascale https://aurascale-team:${TOKEN}@github.com/aurascale-team/thenonsenserealm.git
