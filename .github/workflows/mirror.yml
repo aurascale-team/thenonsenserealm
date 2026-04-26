@@ -1,0 +1,20 @@
+name: Mirror to AuraScale
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Push to AuraScale repo
+        run: |
+          git remote add aurascale https://x-access-token:${{ secrets.AURASCALE_TOKEN }}@github.com/aurascale-team/thenonsenserealm.git
+          git push aurascale main --force
