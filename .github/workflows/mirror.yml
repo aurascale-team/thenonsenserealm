@@ -17,6 +17,16 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Debug token presence
+        env:
+          TOKEN: ${{ secrets.AURASCALE_TOKEN }}
+        run: |
+          if [ -z "$TOKEN" ]; then
+            echo "TOKEN is empty - secret not found"
+          else
+            echo "TOKEN is set (length: ${#TOKEN})"
+          fi
+
       - name: Push to AuraScale repo
         env:
           TOKEN: ${{ secrets.AURASCALE_TOKEN }}
