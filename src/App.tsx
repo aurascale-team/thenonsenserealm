@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
+import { Analytics } from '@vercel/analytics/react'
 import { Navbar } from './components/layout/Navbar'
 import { Footer } from './components/layout/Footer'
 import { D20Button } from './components/ui/D20Button'
@@ -89,6 +90,7 @@ export default function App() {
 
         <D20Button isDark={isDark} />
       </motion.div>
+      <Analytics />
     </>
   )
 }
