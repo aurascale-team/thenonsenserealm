@@ -22,23 +22,12 @@ jobs:
           git config user.email "reegen@aurascale.co.uk"
           git config user.name "aurascale-team"
 
-          # Save this workflow file before overwriting
           cp .github/workflows/sync.yml /tmp/sync.yml
 
           git remote add chester https://github.com/ChesterDescallar/NonsenseRealm.git
           git fetch chester main
-
-          # Check if Chester has new commits — skip if already in sync
-          CHESTER_SHA=$(git rev-parse chester/main)
-          LOCAL_SHA=$(git rev-parse HEAD)
-          if [ "$CHESTER_SHA" = "$LOCAL_SHA" ]; then
-            echo "Already in sync, nothing to do."
-            exit 0
-          fi
-
           git reset --hard chester/main
 
-          # Rewrite all commit authors
           git filter-branch -f --env-filter '
             export GIT_AUTHOR_NAME="aurascale-team"
             export GIT_AUTHOR_EMAIL="reegen@aurascale.co.uk"
@@ -46,7 +35,6 @@ jobs:
             export GIT_COMMITTER_EMAIL="reegen@aurascale.co.uk"
           ' -- --all
 
-          # Restore sync.yml
           mkdir -p .github/workflows
           cp /tmp/sync.yml .github/workflows/sync.yml
           git add .github/workflows/sync.yml
