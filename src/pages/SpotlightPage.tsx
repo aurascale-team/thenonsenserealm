@@ -577,7 +577,7 @@ export function SpotlightPage({ isDark }: SpotlightPageProps) {
                     className="mt-3 flex-1 text-xs leading-relaxed line-clamp-3"
                     style={{ fontFamily: "'Glacial Indifference', sans-serif", color: mutedColor, fontStyle: 'italic' }}
                   >
-                    "{review.summary}"
+                    {review.full[0].length > 200 ? `"${review.full[0].slice(0, 200)}…"` : `"${review.full[0]}"`}
                   </p>
                   <div
                     className="mt-4 pt-4 flex items-center justify-between"
